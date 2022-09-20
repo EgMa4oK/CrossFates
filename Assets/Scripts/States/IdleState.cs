@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class IdleState : BaseState
 {
-    private float _detectionDistance = 5f;
-    public IdleState(Character character, IStateSwitcher stateMachine, Transform transform) :
+    private float _findDistance;
+    public IdleState(Character character, Enemy stateMachine, Transform transform, float findDistance) :
         base(character, stateMachine, transform)
-    { 
+    {
+        _findDistance = findDistance;
     }
 
 
@@ -19,14 +20,9 @@ public class IdleState : BaseState
 
     public override void UpdateLogic()
     {
-        if (DistanceToCharacter < _detectionDistance)
+        if (DistanceToCharacter < _findDistance)
         {
             _stateMachine.SwitchState<FightState>();
         }
-    }
-
-    public override void UpdatePhysics()
-    {
-    }
-    
+    }    
 }

@@ -2,17 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Character : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] private float _speed;
+
+    private Rigidbody2D _rigidbody;
+    private Controls _controls;
+
     void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _controls = new Controls();
+        _controls.Enable();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        _rigidbody.velocity = _controls.Player.Axis.ReadValue<Vector2>() * _speed;
     }
 }

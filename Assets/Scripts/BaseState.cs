@@ -6,13 +6,13 @@ public abstract class BaseState
 {
     
     protected readonly Character _character; 
-    protected readonly IStateSwitcher _stateMachine;
+    protected readonly Enemy _stateMachine;
     protected readonly Transform _transform;
     protected readonly Transform _characterTransform;
 
     protected float DistanceToCharacter => Vector2.Distance(_transform.position, _characterTransform.position);
 
-    public BaseState(Character character, IStateSwitcher stateMachine, Transform transform)
+    public BaseState(Character character, Enemy stateMachine, Transform transform)
     {
         _character = character;
         _stateMachine = stateMachine;
