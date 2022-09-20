@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, ITakesDamage
+public class Enemy1 : MonoBehaviour, ITakesDamage
 {
     [SerializeField] float health;
     private IEnumerator StandingHere;

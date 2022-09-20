@@ -72,7 +72,7 @@ public class PlayerAttack : MonoBehaviour
             foreach (Collider2D enemy in Physics2D.OverlapCircleAll((Vector2)transform.position + axis, lightAttack.AttackRadius, enemy_layer))
             {
                 enemy.GetComponent<ITakesDamage>().TakeDamage(stats.Damage * lightAttack.DamageModifier);
-                Enemy EnemyComp = enemy.GetComponent<Enemy>();
+                Enemy1 EnemyComp = enemy.GetComponent<Enemy1>();
                 if (EnemyComp != null)
                 {
                     EnemyComp.Stun(stats.Stun, stats.Damage * lightAttack.DamageModifier);
@@ -111,7 +111,7 @@ public class PlayerAttack : MonoBehaviour
             foreach (Collider2D enemy in Physics2D.OverlapCircleAll((Vector2)transform.position + axis, heavyAttack.AttackRadius, enemy_layer))
             {
                 enemy.GetComponent<ITakesDamage>().TakeDamage(stats.Damage * heavyAttack.DamageModifier);
-                Enemy EnemyComp = enemy.GetComponent<Enemy>();
+                Enemy1 EnemyComp = enemy.GetComponent<Enemy1>();
                 if (EnemyComp != null)
                 {
                     EnemyComp.Stun(stats.Stun * 2.5f, stats.Damage * heavyAttack.DamageModifier);
