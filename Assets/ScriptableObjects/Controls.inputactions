@@ -1,0 +1,95 @@
+{
+    "name": "New Controls",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "15c5ba06-ecee-44fe-adf0-9e5c4b2d2b69",
+            "actions": [
+                {
+                    "name": "Axis",
+                    "type": "Value",
+                    "id": "5e2bcc7f-b859-4874-8a42-c314afc0ee98",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "2D Vector",
+                    "id": "dcaea47d-a7b6-4913-a348-f5f83460de55",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Axis",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "433c3c97-be52-4d2f-9ea5-513ac90621ec",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard-Mouse",
+                    "action": "Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "9d0177a5-8d18-41a8-b740-eb138debcbc5",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard-Mouse",
+                    "action": "Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "807bbc6a-a07f-412c-9de3-e056f712974c",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard-Mouse",
+                    "action": "Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "57988bf8-84c6-4a67-99b9-2eed4481d6d4",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard-Mouse",
+                    "action": "Axis",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                }
+            ]
+        }
+    ],
+    "controlSchemes": [
+        {
+            "name": "Keyboard-Mouse",
+            "bindingGroup": "Keyboard-Mouse",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
+}
