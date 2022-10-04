@@ -619,10 +619,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2006797403}
   - component: {fileID: 2006797402}
-  - component: {fileID: 2006797401}
   - component: {fileID: 2006797406}
   - component: {fileID: 2006797404}
   - component: {fileID: 2006797405}
+  - component: {fileID: 2006797407}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -630,27 +630,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2006797401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006797400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 271abae168d0c404e9ae20b397780aa7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 368604055}
-  _retreatDistance: 3.5
-  _fightDistance: 4.5
-  _offensiveDistance: 7
-  _retreatSpeed: 3
-  _offensiveSpeed: 2
-  _projectile: {fileID: -7849077026090962132, guid: ec8cdfce9b62b114a97bc0b25dfa5959, type: 3}
-  _shotCD: 2
-  _projctileSpeed: 10
 --- !u!212 &2006797402
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -785,6 +764,28 @@ MonoBehaviour:
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &2006797407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006797400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55041303aeb65a54982d6f5b69079a33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _target: {fileID: 368604055}
+  _retreatDistance: 2
+  _fightDistance: 4
+  _offensiveDistance: 6
+  _maxHealth: 10
+  _retreatSpeed: 2
+  _offensiveSpeed: 1.5
+  _projectile: {fileID: -7849077026090962132, guid: ec8cdfce9b62b114a97bc0b25dfa5959, type: 3}
+  _shotCD: 1.2
+  _projctileSpeed: 5
 --- !u!1 &2046601077
 GameObject:
   m_ObjectHideFlags: 0
