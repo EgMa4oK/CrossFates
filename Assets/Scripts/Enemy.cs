@@ -6,7 +6,7 @@ using System.Linq;
 namespace CrossFates
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(FieldOfView))]
-    public class Enemy : MonoBehaviour, IStateSwitcher
+    public class Enemy : MonoBehaviour, IStateSwitcher, ITakesDamage
     {
         [SerializeField] private Character _target;
         [SerializeField] private float _retreatDistance;
