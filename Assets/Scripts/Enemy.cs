@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(FieldOfView))]
 public class Enemy : MonoBehaviour, IStateSwitcher
 {
-    [SerializeField] private Character _character;
-    [SerializeField] private float _findDistance;
+    [SerializeField] private Character _target;
     [SerializeField] private float _retreatDistance;
     [SerializeField] private float _fightDistance;
     [SerializeField] private float _offensiveDistance;
-    [SerializeField] private float _loseDistance;
 
     [SerializeField] private float _retreatSpeed;
     [SerializeField] private float _offensiveSpeed;
@@ -20,24 +18,37 @@ public class Enemy : MonoBehaviour, IStateSwitcher
     [SerializeField] private float _shotCD;
     [SerializeField] private float _projctileSpeed;
 
+    private FieldOfView _fieldOfView;
     private Rigidbody2D _rigidbody;
     private BaseState _currentState;
     private List<BaseState> _allStates;
 
     private Transform _transform;
     private float _lastShotTime = 0f;
-    
+
+    public FieldOfView FieldOfView => _fieldOfView;
+    public Transform Transform => _transform;
+    public Rigidbody2D Rigidbody => _rigidbody;
+    public Character Target => _target;
+    public float RetreatDistance => _retreatDistance;
+    public float FightDistance => _fightDistance;
+    public float OffensiveDistance => _offensiveDistance;
+    public float RetreatSpeed => _retreatSpeed;
+    public float OffensiveSpeed => _offensiveSpeed;
+
+
 
     private void Start()
     {
+        _fieldOfView = GetComponent<FieldOfView>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _transform = transform;
         _allStates = new List<BaseState>()
         {
-            new IdleState(_character, this, _transform, _findDistance),
-            new FightState(_character, this, _transform, _retreatDistance, _offensiveDistance, Shoot),
-            new RetreatState(_character, this, _rigidbody, _fightDistance, _retreatSpeed),
-            new OffensiveState(_character, this, _rigidbody, _fightDistance, _loseDistance, _offensiveSpeed, Shoot),          
+            new IdleState(this),
+            new FightState(this, Shoot),
+            new RetreatState(this),
+            new OffensiveState(this, Shoot),          
         };
         _currentState = _allStates[0];
 
@@ -63,7 +74,7 @@ public class Enemy : MonoBehaviour, IStateSwitcher
     {
         if (Time.time - _shotCD >= _lastShotTime)
         {
-            var a = - _transform.position + _character.transform.position;
+            var a = - _transform.position + _target.transform.position;
             var angle = Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg;
             var projectile = Instantiate<Rigidbody2D>(_projectile, transform.position, Quaternion.Euler(0, 0, angle));
             projectile.velocity = projectile.transform.right * _projctileSpeed;

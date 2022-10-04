@@ -5,19 +5,20 @@ using UnityEngine;
 public abstract class BaseState
 {
     
-    protected readonly Character _character; 
     protected readonly Enemy _stateMachine;
+    protected readonly Character _target;
     protected readonly Transform _transform;
-    protected readonly Transform _characterTransform;
+    protected readonly Transform _targetTransform;
 
-    protected float DistanceToCharacter => Vector2.Distance(_transform.position, _characterTransform.position);
+    protected float DistanceToCharacter => Vector2.Distance(_transform.position, _targetTransform.position);
 
-    public BaseState(Character character, Enemy stateMachine, Transform transform)
+    public BaseState(Enemy stateMachine)
     {
-        _character = character;
+        
         _stateMachine = stateMachine;
-        _transform = transform;
-        _characterTransform = character.transform;
+        _target = stateMachine.Target;
+        _transform = stateMachine.Transform;
+        _targetTransform = _target.transform;
     }
 
     public virtual void Enter() { }

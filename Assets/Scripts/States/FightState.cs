@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class FightState : BaseState
@@ -8,11 +9,13 @@ public class FightState : BaseState
     private float _retreatDistance;
     private float _offensiveDistance;
     private Action _shoot;
+    private FieldOfView _fieldOfView;
 
-    public FightState(Character character, Enemy stateMachine, Transform transform, float retreatDistance, float offensiveDistance, Action shoot) : base(character, stateMachine, transform)
+    public FightState(Enemy stateMachine, Action shoot) : base(stateMachine)
     {
-        _retreatDistance = retreatDistance;
-        _offensiveDistance = offensiveDistance;
+        _retreatDistance = stateMachine.RetreatDistance;
+        _offensiveDistance = stateMachine.OffensiveDistance;
+        _fieldOfView = stateMachine.FieldOfView;
         _shoot = shoot;
     }
 
@@ -31,6 +34,11 @@ public class FightState : BaseState
         else if (DistanceToCharacter <=  _retreatDistance)
         {
             _stateMachine.SwitchState<RetreatState>();
+        }
+        else if (!_fieldOfView.VisibleTargets.Contains(_targetTransform))
+        {
+
+            _stateMachine.SwitchState<IdleState>();
         }
         _shoot.Invoke();
 

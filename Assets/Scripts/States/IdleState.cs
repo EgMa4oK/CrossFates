@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class IdleState : BaseState
 {
-    private float _findDistance;
-    public IdleState(Character character, Enemy stateMachine, Transform transform, float findDistance) :
-        base(character, stateMachine, transform)
+
+    private FieldOfView _fieldOfView;
+
+    public IdleState(Enemy stateMachine) :
+        base(stateMachine)
     {
-        _findDistance = findDistance;
+        _fieldOfView = stateMachine.FieldOfView;
     }
 
 
@@ -20,7 +23,7 @@ public class IdleState : BaseState
 
     public override void UpdateLogic()
     {
-        if (DistanceToCharacter < _findDistance)
+        if (_fieldOfView.VisibleTargets.Contains(_targetTransform))
         {
             _stateMachine.SwitchState<FightState>();
         }

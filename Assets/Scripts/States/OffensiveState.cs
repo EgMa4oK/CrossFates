@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class OffensiveState : BaseState
 {
     private float _fightDistance;
     private float _speed;
-    private float _loseDistance;
     private Rigidbody2D _rigidbody;
+    private FieldOfView _fieldOfView;
     private Action _shoot;
 
-    public OffensiveState(Character character, Enemy stateMachine, Rigidbody2D rigidbody, float fightDistance, float loseDistance, float speed, Action shoot) : base(character, stateMachine, rigidbody.transform)
+    public OffensiveState(Enemy stateMachine, Action shoot) : base(stateMachine)
     {
-        _fightDistance = fightDistance;
-        _speed = speed;
-        _rigidbody = rigidbody;
+        _fightDistance = stateMachine.FightDistance;
+        _speed = stateMachine.OffensiveSpeed;
+        _rigidbody = stateMachine.Rigidbody;
+        _fieldOfView = stateMachine.FieldOfView;
         _shoot = shoot;
-        _loseDistance = loseDistance;
     }
 
     public override void Enter()
@@ -27,13 +28,13 @@ public class OffensiveState : BaseState
 
     public override void UpdateLogic()
     {
-        _rigidbody.velocity = -(_transform.position - _characterTransform.position).normalized * _speed;
+        _rigidbody.velocity = -(_transform.position - _targetTransform.position).normalized * _speed;
         _shoot.Invoke();
         if (DistanceToCharacter <= _fightDistance)
         {       
             _stateMachine.SwitchState<FightState>();
         }
-        else if (DistanceToCharacter >= _loseDistance)
+        else if (!_fieldOfView.VisibleTargets.Contains(_targetTransform))
         {
             
             _stateMachine.SwitchState<IdleState>();
