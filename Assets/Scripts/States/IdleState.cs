@@ -3,29 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class IdleState : BaseState
+namespace CrossFates
 {
-
-    private FieldOfView _fieldOfView;
-
-    public IdleState(Enemy stateMachine) :
-        base(stateMachine)
+    public class IdleState : BaseState
     {
-        _fieldOfView = stateMachine.FieldOfView;
-    }
 
+        private FieldOfView _fieldOfView;
 
-    public override void Enter()
-    {
-        Debug.Log("standing here");
-    }
-
-
-    public override void UpdateLogic()
-    {
-        if (_fieldOfView.VisibleTargets.Contains(_targetTransform))
+        public IdleState(Enemy stateMachine) :
+            base(stateMachine)
         {
-            _stateMachine.SwitchState<FightState>();
+            _fieldOfView = stateMachine.FieldOfView;
         }
-    }    
+
+
+        public override void Enter()
+        {
+            Debug.Log("standing here");
+        }
+
+
+        public override void UpdateLogic()
+        {
+            if (_fieldOfView.VisibleTargets.Contains(_targetTransform))
+            {
+                _stateMachine.SwitchState<FightState>();
+            }
+        }
+    }
+
 }

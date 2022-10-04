@@ -2,23 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
-public class Character : MonoBehaviour
+namespace CrossFates
 {
-    [SerializeField] private float _speed;
-
-    private Rigidbody2D _rigidbody;
-    private Controls _controls;
-
-    void Start()
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class Character : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _controls = new Controls();
-        _controls.Enable();
+        [SerializeField] private float _speed;
+
+        private Rigidbody2D _rigidbody;
+        private Controls _controls;
+
+        void Start()
+        {
+            _rigidbody = GetComponent<Rigidbody2D>();
+            _controls = new Controls();
+            _controls.Enable();
+        }
+
+        void Update()
+        {
+            _rigidbody.velocity = _controls.Player.Axis.ReadValue<Vector2>() * _speed;
+        }
     }
 
-    void Update()
-    {
-        _rigidbody.velocity = _controls.Player.Axis.ReadValue<Vector2>() * _speed;
-    }
 }

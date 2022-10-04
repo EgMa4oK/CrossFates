@@ -4,43 +4,47 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FightState : BaseState
+namespace CrossFates
 {
-    private float _retreatDistance;
-    private float _offensiveDistance;
-    private Action _shoot;
-    private FieldOfView _fieldOfView;
-
-    public FightState(Enemy stateMachine, Action shoot) : base(stateMachine)
+    public class FightState : BaseState
     {
-        _retreatDistance = stateMachine.RetreatDistance;
-        _offensiveDistance = stateMachine.OffensiveDistance;
-        _fieldOfView = stateMachine.FieldOfView;
-        _shoot = shoot;
-    }
+        private float _retreatDistance;
+        private float _offensiveDistance;
+        private Action _shoot;
+        private FieldOfView _fieldOfView;
 
-    public override void Enter()
-    {
-        Debug.Log("Another Test Subject");
-    }
-
-    public override void UpdateLogic()
-    {
-
-        if (DistanceToCharacter >= _offensiveDistance)
+        public FightState(Enemy stateMachine, Action shoot) : base(stateMachine)
         {
-            _stateMachine.SwitchState<OffensiveState>();       
+            _retreatDistance = stateMachine.RetreatDistance;
+            _offensiveDistance = stateMachine.OffensiveDistance;
+            _fieldOfView = stateMachine.FieldOfView;
+            _shoot = shoot;
         }
-        else if (DistanceToCharacter <=  _retreatDistance)
+
+        public override void Enter()
         {
-            _stateMachine.SwitchState<RetreatState>();
+            Debug.Log("Another Test Subject");
         }
-        else if (!_fieldOfView.VisibleTargets.Contains(_targetTransform))
+
+        public override void UpdateLogic()
         {
 
-            _stateMachine.SwitchState<IdleState>();
+            if (DistanceToCharacter >= _offensiveDistance)
+            {
+                _stateMachine.SwitchState<OffensiveState>();
+            }
+            else if (DistanceToCharacter <= _retreatDistance)
+            {
+                _stateMachine.SwitchState<RetreatState>();
+            }
+            else if (!_fieldOfView.VisibleTargets.Contains(_targetTransform))
+            {
+
+                _stateMachine.SwitchState<IdleState>();
+            }
+            _shoot.Invoke();
+
         }
-        _shoot.Invoke();
 
     }
 
