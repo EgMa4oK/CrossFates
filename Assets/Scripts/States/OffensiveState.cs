@@ -32,9 +32,10 @@ namespace CrossFates
         }
 
         public override void UpdateLogic()
-        {
+        {        
             _agent.SetDestination(_targetTransform.position);
             _shoot.Invoke();
+            _stateMachine.Facing.CheckDirection(_agent.desiredVelocity);
             if (DistanceToCharacter <= _fightDistance)
             {
                 _stateMachine.SwitchState<FightState>();

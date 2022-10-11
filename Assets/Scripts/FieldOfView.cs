@@ -19,6 +19,7 @@ namespace CrossFates
 		public float ViewRadius => _viewRadius;
 		public float ViewAngle => _viewAngle;
 		public IEnumerable<Transform> VisibleTargets => _visibleTargets;
+		public Vector2 Direction = Vector2.right;
 
 		private void Start()
 		{
@@ -43,7 +44,7 @@ namespace CrossFates
 			{
 				Transform target = targetsInViewRadius[i].transform;
 				Vector3 dirToTarget = (target.position - transform.position).normalized;
-				if (Vector3.Angle(transform.right, dirToTarget) < _viewAngle / 2)
+				if (Vector3.Angle(Direction, dirToTarget) < _viewAngle / 2)
 				{
 					float dstToTarget = Vector3.Distance(transform.position, target.position);
 					if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, _obstacleMask))
@@ -58,8 +59,9 @@ namespace CrossFates
 		{
 			if (!angleIsGlobal)
 			{
-				angleInDegrees += transform.eulerAngles.y;
+				angleInDegrees += Mathf.Atan2(Direction.y, Direction.x) * Mathf.Rad2Deg;
 			}
+
 			return new Vector3(Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), 0);
 		}
 

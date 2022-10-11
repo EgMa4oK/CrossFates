@@ -28,6 +28,7 @@ namespace CrossFates
 
         public override void UpdateLogic()
         {
+            _stateMachine.Facing.CheckDirection(_targetTransform.position - _transform.position);
 
             if (DistanceToCharacter >= _offensiveDistance)
             {

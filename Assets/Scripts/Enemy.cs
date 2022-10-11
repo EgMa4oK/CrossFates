@@ -21,6 +21,7 @@ namespace CrossFates
         [SerializeField] private Rigidbody2D _projectile;
         [SerializeField] private float _shotCD;
         [SerializeField] private float _projctileSpeed;
+        [SerializeField] private Facing _facing;
 
         private FieldOfView _fieldOfView;
         private Rigidbody2D _rigidbody;
@@ -28,10 +29,11 @@ namespace CrossFates
         private List<BaseState> _allStates;
         private float _health;
         private NavMeshAgent _agent;
-
+        private SpriteRenderer _spriteRenderer;
         private Transform _transform;
         private float _lastShotTime = 0f;
 
+        public Facing Facing => _facing;
         public NavMeshAgent Agent => _agent;
         public FieldOfView FieldOfView => _fieldOfView;
         public Transform Transform => _transform;
@@ -48,10 +50,12 @@ namespace CrossFates
 
         private void Start()
         {
+            _facing.Init();
             _health = _maxHealth;
             _agent = GetComponent<NavMeshAgent>();
             _fieldOfView = GetComponent<FieldOfView>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
             _transform = transform;
@@ -69,10 +73,13 @@ namespace CrossFates
 
         private void Update()
         {
+            
             if (_currentState != null)
             {
                 _currentState.UpdateLogic();
             }
+            _spriteRenderer.sprite = _facing.Sprite;
+            _fieldOfView.Direction = _facing.Direction;
         }
 
         public void ApplyDamage(float damage)

@@ -27,6 +27,7 @@ namespace CrossFates {
         {
 
             base.UpdateLogic();
+            _stateMachine.Facing.CheckDirection(_agent.desiredVelocity);
             if ((_transform.position - _targetPosition).magnitude <= 0.15)
             {
                 _stateMachine.SwitchState<IdleState>();
