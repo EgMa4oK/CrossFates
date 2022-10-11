@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.AI;
 
 namespace CrossFates
 {
@@ -13,6 +14,7 @@ namespace CrossFates
         private Rigidbody2D _rigidbody;
         private FieldOfView _fieldOfView;
         private Action _shoot;
+        private NavMeshAgent _agent;
 
         public OffensiveState(Enemy stateMachine, Action shoot) : base(stateMachine)
         {
@@ -21,6 +23,7 @@ namespace CrossFates
             _rigidbody = stateMachine.Rigidbody;
             _fieldOfView = stateMachine.FieldOfView;
             _shoot = shoot;
+            _agent = stateMachine.Agent;
         }
 
         public override void Enter()
@@ -30,7 +33,7 @@ namespace CrossFates
 
         public override void UpdateLogic()
         {
-            _rigidbody.velocity = -(_transform.position - _targetTransform.position).normalized * _speed;
+            _agent.SetDestination(_targetTransform.position);
             _shoot.Invoke();
             if (DistanceToCharacter <= _fightDistance)
             {
@@ -46,7 +49,7 @@ namespace CrossFates
         public override void Exit()
         {
             base.Exit();
-            _rigidbody.velocity = new Vector2(0, 0);
+            _agent.SetDestination(_transform.position);
         }
 
     }

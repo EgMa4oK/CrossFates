@@ -2724,7 +2724,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -2070680156, guid: 79634994b1231cd41b5a30df641c70b0, type: 3}
   m_Color: {r: 0.6226415, g: 0.09692062, b: 0.09692062, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2806,7 +2806,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2006797400}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.00001
+  m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -2844,7 +2844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewRadius: 8.12
-  _viewAngle: 360
+  _viewAngle: 130
   _targetMask:
     serializedVersion: 2
     m_Bits: 64

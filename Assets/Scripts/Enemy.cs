@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.AI;
 
 namespace CrossFates
 {
-    [RequireComponent(typeof(Rigidbody2D), typeof(FieldOfView))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(FieldOfView), typeof(NavMeshAgent))]
     public class Enemy : MonoBehaviour, IStateSwitcher, ITakesDamage
     {
         [SerializeField] private Character _target;
@@ -26,10 +27,12 @@ namespace CrossFates
         private BaseState _currentState;
         private List<BaseState> _allStates;
         private float _health;
+        private NavMeshAgent _agent;
 
         private Transform _transform;
         private float _lastShotTime = 0f;
 
+        public NavMeshAgent Agent => _agent;
         public FieldOfView FieldOfView => _fieldOfView;
         public Transform Transform => _transform;
         public Rigidbody2D Rigidbody => _rigidbody;
@@ -45,8 +48,11 @@ namespace CrossFates
         private void Start()
         {
             _health = _maxHealth;
+            _agent = GetComponent<NavMeshAgent>();
             _fieldOfView = GetComponent<FieldOfView>();
             _rigidbody = GetComponent<Rigidbody2D>();
+            _agent.updateRotation = false;
+            _agent.updateUpAxis = false;
             _transform = transform;
             _allStates = new List<BaseState>()
             {
