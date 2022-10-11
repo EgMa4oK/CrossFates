@@ -37,6 +37,7 @@ namespace CrossFates
         public Transform Transform => _transform;
         public Rigidbody2D Rigidbody => _rigidbody;
         public Character Target => _target;
+        public Vector3 LastTargetPosition {get; set;}
         public float RetreatDistance => _retreatDistance;
         public float FightDistance => _fightDistance;
         public float OffensiveDistance => _offensiveDistance;
@@ -59,7 +60,8 @@ namespace CrossFates
                 new IdleState(this),
                 new FightState(this, Shoot),
                 new RetreatState(this),
-                new OffensiveState(this, Shoot),          
+                new OffensiveState(this, Shoot),
+                new SearchState(this),
             };
             _currentState = _allStates[0];
 

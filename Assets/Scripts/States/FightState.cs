@@ -39,8 +39,8 @@ namespace CrossFates
             }
             else if (!_fieldOfView.VisibleTargets.Contains(_targetTransform))
             {
-
-                _stateMachine.SwitchState<IdleState>();
+                _stateMachine.LastTargetPosition = _targetTransform.position;
+                _stateMachine.SwitchState<SearchState>();
             }
             _shoot.Invoke();
 
