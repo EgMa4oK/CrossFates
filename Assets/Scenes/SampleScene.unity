@@ -2673,10 +2673,8 @@ GameObject:
   - component: {fileID: 2006797404}
   - component: {fileID: 2006797405}
   - component: {fileID: 2006797406}
-  - component: {fileID: 2006797407}
   - component: {fileID: 2006797408}
   - component: {fileID: 2006797409}
-  - component: {fileID: 2006797410}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -2820,18 +2818,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2006797407
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006797400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc4c3ab1636d8643b43ac6764c17629, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2006797408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2845,13 +2831,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _viewRadius: 8.12
-  _viewAngle: 360
+  _viewAngle: 130
   _targetMask:
     serializedVersion: 2
     m_Bits: 64
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 128
+  Direction: {x: 1, y: 0}
 --- !u!114 &2006797409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2874,23 +2861,8 @@ MonoBehaviour:
   _projectile: {fileID: -7849077026090962132, guid: ec8cdfce9b62b114a97bc0b25dfa5959, type: 3}
   _shotCD: 2
   _projctileSpeed: 5
---- !u!114 &2006797410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006797400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57c008f954fe54a8bb972de1018a2cb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_RootBone: {fileID: 2006797403}
-  m_BoneTransforms: []
-  m_Bounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0, y: 0, z: 0}
-  m_UseBatching: 1
-  m_AlwaysUpdate: 1
-  m_AutoRebind: 0
+  _facing:
+    _spriteUp: {fileID: -312043371, guid: 79634994b1231cd41b5a30df641c70b0, type: 3}
+    _spriteDown: {fileID: -350059004, guid: 79634994b1231cd41b5a30df641c70b0, type: 3}
+    _spriteLeft: {fileID: 736712503, guid: 79634994b1231cd41b5a30df641c70b0, type: 3}
+    _spriteRight: {fileID: -2070680156, guid: 79634994b1231cd41b5a30df641c70b0, type: 3}
