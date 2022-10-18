@@ -7,7 +7,7 @@ using UnityEngine.AI;
 
 namespace CrossFates
 {
-    public class OffensiveState : BaseState
+    public class OffensiveState : BattleState
     {
         private float _fightDistance;
         private float _speed;
@@ -32,18 +32,14 @@ namespace CrossFates
         }
 
         public override void UpdateLogic()
-        {        
+        {
+            base.UpdateLogic();
             _agent.SetDestination(_targetTransform.position);
             _shoot.Invoke();
             _stateMachine.Facing.CheckDirection(_agent.desiredVelocity);
             if (DistanceToCharacter <= _fightDistance)
             {
                 _stateMachine.SwitchState<FightState>();
-            }
-            else if (!_fieldOfView.VisibleTargets.Contains(_targetTransform))
-            {
-                _stateMachine.LastTargetPosition = _targetTransform.position;
-                _stateMachine.SwitchState<SearchState>();
             }
         }
 

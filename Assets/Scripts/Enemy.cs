@@ -68,40 +68,14 @@ namespace CrossFates
                 new SearchState(this),
             };
             _currentState = _allStates[0];
-
+            StartCoroutine(UpdateLogic());
         }
 
         private void Update()
         {
-            
-            if (_currentState != null)
-            {
-                _currentState.UpdateLogic();
-            }
             _spriteRenderer.sprite = _facing.Sprite;
             _fieldOfView.Direction = _facing.Direction;
-        }
-
-        public void ApplyDamage(float damage)
-        {
-            _health -= damage;
-            if (_health <= 0)
-            {
-                Die();
-            }
-        }
-
-        public void Heal(float heal)
-        {
-            if (_health + heal > _maxHealth) 
-            {
-                _health += _maxHealth - _health;
-            }
-            else
-            {
-                _health += heal;
-            }
-        }
+        }  
 
         private void Die()
         {
@@ -114,6 +88,7 @@ namespace CrossFates
             {
                 _currentState.UpdatePhysics();
             }
+            
         }
 
         private void Shoot()
@@ -129,6 +104,20 @@ namespace CrossFates
             }
         }
 
+        private IEnumerator UpdateLogic()
+        {
+            while (true) 
+            {
+                if (_currentState != null)
+                {
+                    _currentState.UpdateLogic();
+                }
+
+                yield return new WaitForSeconds(0.2f);
+            }
+            
+        }
+
         public void SwitchState<T>() where T : BaseState
         {
             var state = _allStates.FirstOrDefault(s => s is T);
@@ -136,6 +125,27 @@ namespace CrossFates
             _currentState.Exit();
             _currentState = state;
             _currentState.Enter();
+        }
+
+        public void ApplyDamage(float damage)
+        {
+            _health -= damage;
+            if (_health <= 0)
+            {
+                Die();
+            }
+        }
+
+        public void Heal(float heal)
+        {
+            if (_health + heal > _maxHealth)
+            {
+                _health = _maxHealth;
+            }
+            else
+            {
+                _health += heal;
+            }
         }
 
     }
