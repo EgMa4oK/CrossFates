@@ -19,10 +19,12 @@ namespace CrossFates.EnemyStates
         public override void Enter()
         {
             Debug.Log("Another Test Subject");
+            _stateMachine.Facing.CheckDirection(_targetTransform.position - _transform.position);
         }
 
         public override void UpdateLogic()
         {
+            base.UpdateLogic();
             _stateMachine.Facing.CheckDirection(_targetTransform.position - _transform.position);
 
             if (DistanceToCharacter >= _offensiveDistance)

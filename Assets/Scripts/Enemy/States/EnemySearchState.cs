@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,7 @@ namespace CrossFates.EnemyStates {
         public override void Enter()
         {
             base.Enter();
+            _stateMachine.AllyFindTarget += OnEnemyFinded;
             _targetPosition = _stateMachine.LastTargetPosition;
             Debug.Log($"{_targetPosition}, {_stateMachine.LastTargetPosition}");
             _agent.SetDestination(_targetPosition);
@@ -38,8 +40,16 @@ namespace CrossFates.EnemyStates {
             }
 
         }
+
+        public void OnEnemyFinded(Vector2 targetPosition)
+        {
+            _agent.SetDestination(_targetPosition);
+        }
+
         public override void Exit()
         {
+            _stateMachine.AllyFindTarget -= OnEnemyFinded;
+            _agent.SetDestination(_transform.position);
             Debug.Log("On target last position");
         }
 
