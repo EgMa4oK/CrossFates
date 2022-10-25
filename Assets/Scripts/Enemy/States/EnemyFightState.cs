@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace CrossFates
+namespace CrossFates.EnemyStates
 {
     public class FightState : BattleState
     {

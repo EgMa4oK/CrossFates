@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using UnityEngine.AI;
+using CrossFates.EnemyStates;
 
 namespace CrossFates
 {
     [RequireComponent(typeof(Rigidbody2D), typeof(FieldOfView), typeof(NavMeshAgent))]
-    public class Enemy : MonoBehaviour, IStateSwitcher, ITakesDamage
+    public class Enemy : MonoBehaviour, ITakesDamage
     {
-        [SerializeField] private Character _target;
+        [SerializeField] private PlayerCharacter _target;
         [SerializeField] private float _retreatDistance;
         [SerializeField] private float _fightDistance;
         [SerializeField] private float _offensiveDistance;
@@ -25,8 +26,8 @@ namespace CrossFates
 
         private FieldOfView _fieldOfView;
         private Rigidbody2D _rigidbody;
-        private BaseState _currentState;
-        private List<BaseState> _allStates;
+        private EnemyState _currentState;
+        private List<EnemyState> _allStates;
         private float _health;
         private NavMeshAgent _agent;
         private SpriteRenderer _spriteRenderer;
@@ -38,7 +39,7 @@ namespace CrossFates
         public FieldOfView FieldOfView => _fieldOfView;
         public Transform Transform => _transform;
         public Rigidbody2D Rigidbody => _rigidbody;
-        public Character Target => _target;
+        public PlayerCharacter Target => _target;
         public Vector3 LastTargetPosition {get; set;}
         public float RetreatDistance => _retreatDistance;
         public float FightDistance => _fightDistance;
@@ -59,7 +60,7 @@ namespace CrossFates
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
             _transform = transform;
-            _allStates = new List<BaseState>()
+            _allStates = new List<EnemyState>()
             {
                 new IdleState(this),
                 new FightState(this, Shoot),
@@ -115,10 +116,9 @@ namespace CrossFates
 
                 yield return new WaitForSeconds(0.2f);
             }
-            
         }
 
-        public void SwitchState<T>() where T : BaseState
+        public void SwitchState<T>() where T : EnemyState
         {
             var state = _allStates.FirstOrDefault(s => s is T);
 

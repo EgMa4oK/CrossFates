@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using UnityEngine.AI;
 
-namespace CrossFates
+namespace CrossFates.EnemyStates
 {
     public class OffensiveState : BattleState
     {

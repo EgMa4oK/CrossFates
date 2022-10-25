@@ -297,9 +297,9 @@ GameObject:
   - component: {fileID: 368604057}
   - component: {fileID: 368604056}
   - component: {fileID: 368604060}
-  - component: {fileID: 368604055}
   - component: {fileID: 368604058}
   - component: {fileID: 368604059}
+  - component: {fileID: 368604061}
   m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
@@ -307,19 +307,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &368604055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368604054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cc8733802a546d4f8038c0349962482, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 5
 --- !u!212 &368604056
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -458,6 +445,20 @@ MonoBehaviour:
   _ourNormalStun: 2
   _baseDamage: 2
   _stunTime: 1
+--- !u!114 &368604061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368604054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51647bb193766064f9361a266279e798, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speed: 3
+  _speedModifier: 2.5
 --- !u!1 &417472614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2851,7 +2852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55041303aeb65a54982d6f5b69079a33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 368604055}
+  _target: {fileID: 368604061}
   _retreatDistance: 2
   _fightDistance: 4
   _offensiveDistance: 6

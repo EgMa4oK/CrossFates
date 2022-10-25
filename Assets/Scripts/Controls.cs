@@ -26,7 +26,7 @@ namespace CrossFates
     ""name"": ""Controls"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""Character"",
             ""id"": ""15c5ba06-ecee-44fe-adf0-9e5c4b2d2b69"",
             ""actions"": [
                 {
@@ -37,6 +37,33 @@ namespace CrossFates
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb0c1de9-0c6b-4e18-ad54-68fb99a7fbb0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Parry"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0c116ac-da31-47e4-ae18-e049405e5df6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee200735-4aa3-4e53-80ac-1669ba2393ec"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -94,6 +121,39 @@ namespace CrossFates
                     ""action"": ""Axis"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c6437b86-aaf9-4008-9c37-5f857449778f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2b460269-3276-4aa4-ba7c-050950670618"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Parry"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6449996d-fa89-4863-baa0-28c029aa5682"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -117,9 +177,12 @@ namespace CrossFates
         }
     ]
 }");
-            // Player
-            m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-            m_Player_Axis = m_Player.FindAction("Axis", throwIfNotFound: true);
+            // Character
+            m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
+            m_Character_Axis = m_Character.FindAction("Axis", throwIfNotFound: true);
+            m_Character_Attack = m_Character.FindAction("Attack", throwIfNotFound: true);
+            m_Character_Parry = m_Character.FindAction("Parry", throwIfNotFound: true);
+            m_Character_Dash = m_Character.FindAction("Dash", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -176,38 +239,62 @@ namespace CrossFates
             return asset.FindBinding(bindingMask, out action);
         }
 
-        // Player
-        private readonly InputActionMap m_Player;
-        private IPlayerActions m_PlayerActionsCallbackInterface;
-        private readonly InputAction m_Player_Axis;
-        public struct PlayerActions
+        // Character
+        private readonly InputActionMap m_Character;
+        private ICharacterActions m_CharacterActionsCallbackInterface;
+        private readonly InputAction m_Character_Axis;
+        private readonly InputAction m_Character_Attack;
+        private readonly InputAction m_Character_Parry;
+        private readonly InputAction m_Character_Dash;
+        public struct CharacterActions
         {
             private @Controls m_Wrapper;
-            public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Axis => m_Wrapper.m_Player_Axis;
-            public InputActionMap Get() { return m_Wrapper.m_Player; }
+            public CharacterActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Axis => m_Wrapper.m_Character_Axis;
+            public InputAction @Attack => m_Wrapper.m_Character_Attack;
+            public InputAction @Parry => m_Wrapper.m_Character_Parry;
+            public InputAction @Dash => m_Wrapper.m_Character_Dash;
+            public InputActionMap Get() { return m_Wrapper.m_Character; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
             public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-            public void SetCallbacks(IPlayerActions instance)
+            public static implicit operator InputActionMap(CharacterActions set) { return set.Get(); }
+            public void SetCallbacks(ICharacterActions instance)
             {
-                if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+                if (m_Wrapper.m_CharacterActionsCallbackInterface != null)
                 {
-                    @Axis.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAxis;
-                    @Axis.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAxis;
-                    @Axis.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAxis;
+                    @Axis.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAxis;
+                    @Axis.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAxis;
+                    @Axis.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAxis;
+                    @Attack.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
+                    @Attack.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
+                    @Attack.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
+                    @Parry.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnParry;
+                    @Parry.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnParry;
+                    @Parry.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnParry;
+                    @Dash.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnDash;
+                    @Dash.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnDash;
+                    @Dash.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnDash;
                 }
-                m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+                m_Wrapper.m_CharacterActionsCallbackInterface = instance;
                 if (instance != null)
                 {
                     @Axis.started += instance.OnAxis;
                     @Axis.performed += instance.OnAxis;
                     @Axis.canceled += instance.OnAxis;
+                    @Attack.started += instance.OnAttack;
+                    @Attack.performed += instance.OnAttack;
+                    @Attack.canceled += instance.OnAttack;
+                    @Parry.started += instance.OnParry;
+                    @Parry.performed += instance.OnParry;
+                    @Parry.canceled += instance.OnParry;
+                    @Dash.started += instance.OnDash;
+                    @Dash.performed += instance.OnDash;
+                    @Dash.canceled += instance.OnDash;
                 }
             }
         }
-        public PlayerActions @Player => new PlayerActions(this);
+        public CharacterActions @Character => new CharacterActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -217,9 +304,12 @@ namespace CrossFates
                 return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
             }
         }
-        public interface IPlayerActions
+        public interface ICharacterActions
         {
             void OnAxis(InputAction.CallbackContext context);
+            void OnAttack(InputAction.CallbackContext context);
+            void OnParry(InputAction.CallbackContext context);
+            void OnDash(InputAction.CallbackContext context);
         }
     }
 }

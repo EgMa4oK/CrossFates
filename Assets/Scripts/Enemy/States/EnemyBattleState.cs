@@ -1,8 +1,8 @@
 using System.Linq;
 
-namespace CrossFates
+namespace CrossFates.EnemyStates
 {
-    public class BattleState : BaseState
+    public class BattleState : EnemyState
     {
         private FieldOfView _fieldOfView;
         public BattleState(Enemy stateMachine) : base(stateMachine)

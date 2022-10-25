@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace CrossFates
+namespace CrossFates.EnemyStates
 {
     public class RetreatState : BattleState
     {

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-namespace CrossFates
+namespace CrossFates.EnemyStates
 {
-    public class IdleState : BaseState
+    public class IdleState : EnemyState
     {
 
         private FieldOfView _fieldOfView;

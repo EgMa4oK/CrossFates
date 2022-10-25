@@ -4,8 +4,8 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace CrossFates {
-    public class SearchState : BaseState
+namespace CrossFates.EnemyStates {
+    public class SearchState : EnemyState
     {
         private NavMeshAgent _agent;
         private Vector3 _targetPosition;
