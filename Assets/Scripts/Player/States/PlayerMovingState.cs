@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace CrossFates.PlayerStates
 {
@@ -22,19 +23,28 @@ namespace CrossFates.PlayerStates
             {
                 _character.SwitchState<IdleState>();
             }
-
+            else
+            {
+                _character.LastDirection = _rigidbody.velocity;
+            }
         }
         private void Move()
         {
             _rigidbody.velocity = _direction * _speed;
         }
-        private void Dash()
+        private void Dash(InputAction.CallbackContext context)
         {
-
+            _character.SwitchState<DashState>();
         }
-        public override void Exit() 
+        public override void Exit()
         {
             _rigidbody.velocity = Vector2.zero;
+            _controls.Character.Dash.performed -= Dash;
+        }
+        public override void Enter()
+        {
+            base.Enter();
+            _controls.Character.Dash.performed += Dash;
         }
     }
 }

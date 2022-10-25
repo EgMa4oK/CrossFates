@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace CrossFates.PlayerStates
 {
@@ -20,6 +21,18 @@ namespace CrossFates.PlayerStates
             {
                 _character.SwitchState<RunningState>();
             }
+        }
+        private void Dash(InputAction.CallbackContext context)
+        {
+            _character.SwitchState<DashState>();
+        }
+        public override void Enter()
+        {
+            _controls.Character.Dash.performed += Dash;
+        }
+        public override void Exit()
+        {
+            _controls.Character.Dash.performed -= Dash;
         }
     }
 }
