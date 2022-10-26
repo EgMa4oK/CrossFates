@@ -19,7 +19,14 @@ namespace CrossFates.EnemyStates
 
         public override void Enter()
         {
+            _stateMachine.AllyFindTarget += OnEnemyFinded;
             Debug.Log("standing here");
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            _stateMachine.AllyFindTarget -= OnEnemyFinded;
         }
 
 
@@ -29,6 +36,12 @@ namespace CrossFates.EnemyStates
             {
                 _stateMachine.SwitchState<FightState>();
             }
+        }
+
+        private void OnEnemyFinded(Vector2 targetPosition)
+        {
+            _stateMachine.LastTargetPosition = targetPosition;
+            _stateMachine.SwitchState<SearchState>();
         }
     }
 

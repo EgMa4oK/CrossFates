@@ -4,6 +4,7 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.AI;
 using CrossFates.EnemyStates;
+using System;
 
 namespace CrossFates
 {
@@ -34,6 +35,7 @@ namespace CrossFates
         private Transform _transform;
         private float _lastShotTime = 0f;
 
+        public event Action<Vector2> AllyFindTarget;
         public Facing Facing => _facing;
         public NavMeshAgent Agent => _agent;
         public FieldOfView FieldOfView => _fieldOfView;
@@ -68,7 +70,7 @@ namespace CrossFates
                 new OffensiveState(this, Shoot),
                 new SearchState(this),
             };
-            _currentState = _allStates[0];
+            SwitchState<IdleState>();
             StartCoroutine(UpdateLogic());
         }
 
@@ -76,7 +78,8 @@ namespace CrossFates
         {
             _spriteRenderer.sprite = _facing.Sprite;
             _fieldOfView.Direction = _facing.Direction;
-        }  
+        } 
+        
 
         private void Die()
         {
@@ -121,8 +124,10 @@ namespace CrossFates
         public void SwitchState<T>() where T : EnemyState
         {
             var state = _allStates.FirstOrDefault(s => s is T);
-
-            _currentState.Exit();
+            if (_currentState != null)
+            {
+                _currentState.Exit();
+            } 
             _currentState = state;
             _currentState.Enter();
         }
@@ -134,6 +139,14 @@ namespace CrossFates
             {
                 Die();
             }
+        }
+
+        public void Alert(Vector2 position)
+        {
+            if (AllyFindTarget != null)
+            {
+                AllyFindTarget.Invoke(position);
+            }         
         }
 
         public void Heal(float heal)

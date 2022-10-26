@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace CrossFates.EnemyStates
 {
-    public class RetreatState : BattleState
+    public class RetreatState : EnemyState
     {
         private float _fightDistance;
         private float _speed;
@@ -26,9 +26,9 @@ namespace CrossFates.EnemyStates
         public override void UpdateLogic()
         {
             base.UpdateLogic();
-            _agent.SetDestination(_targetTransform.position + (_transform.position - _targetTransform.position).normalized * _fightDistance);
+            _agent.SetDestination(_targetTransform.position + (_transform.position - _targetTransform.position).normalized * (_fightDistance + 0.25f));
             _stateMachine.Facing.CheckDirection(_agent.desiredVelocity);
-            if (DistanceToCharacter >= _fightDistance)
+            if (DistanceToCharacter >= _fightDistance || _agent.remainingDistance <= _agent.stoppingDistance)
             {
                 _stateMachine.SwitchState<FightState>();
             }
