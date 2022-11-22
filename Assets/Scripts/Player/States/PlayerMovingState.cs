@@ -32,15 +32,18 @@ namespace CrossFates.PlayerStates
         {
             _rigidbody.velocity = _direction * _speed;
         }
+
         private void Dash(InputAction.CallbackContext context)
         {
             _character.SwitchState<DashState>();
         }
+
         public override void Exit()
         {
             _rigidbody.velocity = Vector2.zero;
             _controls.Character.Dash.performed -= Dash;
         }
+
         public override void Enter()
         {
             base.Enter();

@@ -7,14 +7,21 @@ namespace CrossFates.PlayerStates
 {
     public class DashState : PlayerState
     {
+        private Vector2 _direction;
         private float _speed;
-        public DashState(PlayerCharacter character, Rigidbody2D rigidbody, float speed) : base(character, rigidbody)
+        private int _dashTime = 50;
+        private LayerMask _obstacleLayer;
+
+        public DashState(PlayerCharacter character, Rigidbody2D rigidbody, float speed, LayerMask obstacleLayer) : base(character, rigidbody)
         {
             _speed = speed;
+            _obstacleLayer = obstacleLayer;
         }
         public override void Enter()
         {
-            _rigidbody.velocity = _character.LastDirection * _speed;
+            _direction = _character.LastDirection.normalized;
+            
+            
             Timer();
         }
         public override void Exit()
@@ -24,8 +31,23 @@ namespace CrossFates.PlayerStates
         }
         private async void Timer()
         {
-            await Task.Delay(50);
+            await Task.Delay(_dashTime);
             _character.SwitchState<IdleState>();
+        }
+
+        public override void PhysicUpdate()
+        {
+            var distance = _speed * Time.fixedDeltaTime;
+            RaycastHit2D hit = Physics2D.Raycast(_rigidbody.position, _direction, distance, _obstacleLayer.value);
+            if (hit.collider != null)
+            {
+                _rigidbody.MovePosition(hit.point);
+            }
+            else 
+            {
+                _rigidbody.MovePosition(_rigidbody.position + _direction * distance);
+            }
+
         }
     }
 }
