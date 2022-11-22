@@ -3,6 +3,7 @@ using UnityEditor;
 
 namespace CrossFates
 {
+#if UNITY_EDITOR
 	[CustomEditor(typeof(FieldOfView))]
 	public class FieldOfViewEditor : Editor
 	{
@@ -29,5 +30,5 @@ namespace CrossFates
 		}
 
 	}
-
+#endif
 }

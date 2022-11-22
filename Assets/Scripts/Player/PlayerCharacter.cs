@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using CrossFates.PlayerStates;
+using System;
 
 namespace CrossFates {
 
@@ -13,12 +14,27 @@ namespace CrossFates {
         private PlayerState _currentState;
         private List<PlayerState> _allStates;
         private Controls _controls;
-        [SerializeField] float _speed = 1;
-        [SerializeField, Min(1)] float _speedModifier = 2;
-        [SerializeField, Min(1)] float _dashModifier = 4;
+
+        private float _health;
+        [SerializeField]
+        private float _maxHealth;
+
+        [SerializeField]
+        private LayerMask _obstaclesLayer;
+        [SerializeField]
+        private float _speed = 1;
+        [SerializeField, Min(1)]
+        private float _speedModifier = 2;
+        [SerializeField, Min(1)]
+        private float _dashModifier = 4;
+
+
         public Vector2 LastDirection;
+        public event Action<float, float> HealthChanged;
+
         private void Start()
         {
+            _health = _maxHealth;
             _rigidbody = GetComponent<Rigidbody2D>();
             _controls = new Controls();
             _controls.Enable();
@@ -30,9 +46,23 @@ namespace CrossFates {
                 new WalkingState(this, _rigidbody, _speed, _controls),
                 new RunningState(this, _rigidbody, _speed * _speedModifier, _controls),
                 new ParryState(this, _rigidbody),
-                new DashState(this, _rigidbody, _speed * _dashModifier),
+                new DashState(this, _rigidbody, _speed * _dashModifier, _obstaclesLayer),
             };
             _currentState = _allStates[0];
+        }
+        public void TakeDamage(float damage)
+        {
+            _health -= damage;
+            HealthChanged.Invoke(_health, _maxHealth);
+            if (_health <= 0)
+            {
+                Die();
+            }
+        }
+
+        private void Die()
+        {
+            gameObject.SetActive(false);
         }
 
         public void SwitchState<T>() where T : PlayerState
@@ -45,7 +75,18 @@ namespace CrossFates {
 
         private void Update()
         {
-            _currentState.Update();
+            if (_currentState != null)
+            {
+                _currentState.Update();
+            }
+        }
+
+        private void FixedUpdate()
+        {
+            if (_currentState != null)
+            {
+                _currentState.PhysicUpdate();
+            }  
         }
     }
 }

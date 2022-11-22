@@ -14,7 +14,9 @@ namespace CrossFates.PlayerStates
             _rigidbody = rigidbody;
         }
         public virtual void Update() { }
+        public virtual void PhysicUpdate() { }
         public virtual void Enter() { }
         public virtual void Exit() { }
     }
+
 }

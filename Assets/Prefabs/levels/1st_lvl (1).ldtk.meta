@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: e391ccc614a0a2f4c88d54e49bac3717
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: e391ccc614a0a2f4c88d54e49bac3717, type: 3}
+  _pixelsPerUnit: 16
+  _atlas: {instanceID: 0}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 0
+  _createBackgroundColor: 1
+  _intGridValues:
+  - _key: Floor_1
+    _asset: {fileID: 11400000, guid: 911ff206379da894b8ed9c5c46fbe516, type: 2}
+  - _key: Floor_2
+    _asset: {fileID: 11400000, guid: 1fb042a8ff91f3448a917191051d98f4, type: 2}
+  - _key: Floor_3
+    _asset: {fileID: 11400000, guid: 3d602a39390487d4ebff8e628d231281, type: 2}
+  _entities: []
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

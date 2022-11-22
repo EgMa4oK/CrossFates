@@ -20,9 +20,8 @@ namespace CrossFates
         [SerializeField] private float _retreatSpeed;
         [SerializeField] private float _offensiveSpeed;
 
-        [SerializeField] private Rigidbody2D _projectile;
+        [SerializeField] private Projectile _projectile;
         [SerializeField] private float _shotCD;
-        [SerializeField] private float _projctileSpeed;
         [SerializeField] private Facing _facing;
 
         private FieldOfView _fieldOfView;
@@ -101,8 +100,7 @@ namespace CrossFates
             {
                 var a = - _transform.position + _target.transform.position;
                 var angle = Mathf.Atan2(a.y, a.x) * Mathf.Rad2Deg;
-                var projectile = Instantiate<Rigidbody2D>(_projectile, transform.position, Quaternion.Euler(0, 0, angle));
-                projectile.velocity = projectile.transform.right * _projctileSpeed;
+                Projectile projectile = Instantiate(_projectile, transform.position, Quaternion.Euler(0, 0, angle));
                 Destroy(projectile.gameObject, 5f);
                 _lastShotTime = Time.time;
             }

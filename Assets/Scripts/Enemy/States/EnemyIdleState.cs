@@ -20,7 +20,6 @@ namespace CrossFates.EnemyStates
         public override void Enter()
         {
             _stateMachine.AllyFindTarget += OnEnemyFinded;
-            Debug.Log("standing here");
         }
 
         public override void Exit()
