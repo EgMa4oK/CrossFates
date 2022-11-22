@@ -8,12 +8,13 @@ namespace CrossFates
     public class Character : MonoBehaviour
     {
         [SerializeField] private float _speed;
-
+        private Animator _anim;
         private Rigidbody2D _rigidbody;
         private Controls _controls;
 
         void Start()
         {
+            _anim = GetComponent<Animator>();
             _rigidbody = GetComponent<Rigidbody2D>();
             _controls = new Controls();
             _controls.Enable();
