@@ -35,7 +35,7 @@ namespace CrossFates {
         private void Start()
         {
             var level = LevelManager.Level; 
-            transform.position = level.SpawnPoint;
+            transform.position = level == null? Vector2.zero : level.SpawnPoint;
             
             _health = _maxHealth;
             _rigidbody = GetComponent<Rigidbody2D>();

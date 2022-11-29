@@ -1510,7 +1510,7 @@ GameObject:
   - component: {fileID: 874097454}
   - component: {fileID: 874097453}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1580,7 +1580,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 874097454}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1817597570}
+        m_TargetAssemblyTypeName: CrossFates.Menu, Assembly-CSharp
+        m_MethodName: Exit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &874097454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1944,7 +1956,7 @@ GameObject:
   - component: {fileID: 1611587255}
   - component: {fileID: 1611587254}
   m_Layer: 0
-  m_Name: Button
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2014,7 +2026,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1611587255}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1817597570}
+        m_TargetAssemblyTypeName: CrossFates.Menu, Assembly-CSharp
+        m_MethodName: Restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1611587255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2376,6 +2400,7 @@ GameObject:
   - component: {fileID: 1817597566}
   - component: {fileID: 1817597565}
   - component: {fileID: 1817597569}
+  - component: {fileID: 1817597570}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2487,6 +2512,19 @@ MonoBehaviour:
   choicePanel: {fileID: 66029216}
   speakerName: {fileID: 1037913210}
   typingTime: 0.1
+--- !u!114 &1817597570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817597563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43db994c83eccee43a22c4c134c913c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menu: {fileID: 1920213247}
 --- !u!1001 &1872451574
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13393,7 +13431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &1920213248
 CanvasRenderer:
   m_ObjectHideFlags: 0

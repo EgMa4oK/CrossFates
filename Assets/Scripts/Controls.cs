@@ -73,6 +73,15 @@ namespace CrossFates
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""86450158-5dc5-4bfd-b050-1f41deb8765e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +183,17 @@ namespace CrossFates
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7279437-b8c0-4def-8e97-8dce59a97ff9"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -204,6 +224,7 @@ namespace CrossFates
             m_Character_Parry = m_Character.FindAction("Parry", throwIfNotFound: true);
             m_Character_Dash = m_Character.FindAction("Dash", throwIfNotFound: true);
             m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
+            m_Character_Menu = m_Character.FindAction("Menu", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -268,6 +289,7 @@ namespace CrossFates
         private readonly InputAction m_Character_Parry;
         private readonly InputAction m_Character_Dash;
         private readonly InputAction m_Character_Interact;
+        private readonly InputAction m_Character_Menu;
         public struct CharacterActions
         {
             private @Controls m_Wrapper;
@@ -277,6 +299,7 @@ namespace CrossFates
             public InputAction @Parry => m_Wrapper.m_Character_Parry;
             public InputAction @Dash => m_Wrapper.m_Character_Dash;
             public InputAction @Interact => m_Wrapper.m_Character_Interact;
+            public InputAction @Menu => m_Wrapper.m_Character_Menu;
             public InputActionMap Get() { return m_Wrapper.m_Character; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -301,6 +324,9 @@ namespace CrossFates
                     @Interact.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
                     @Interact.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
                     @Interact.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
+                    @Menu.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMenu;
+                    @Menu.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMenu;
+                    @Menu.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMenu;
                 }
                 m_Wrapper.m_CharacterActionsCallbackInterface = instance;
                 if (instance != null)
@@ -320,6 +346,9 @@ namespace CrossFates
                     @Interact.started += instance.OnInteract;
                     @Interact.performed += instance.OnInteract;
                     @Interact.canceled += instance.OnInteract;
+                    @Menu.started += instance.OnMenu;
+                    @Menu.performed += instance.OnMenu;
+                    @Menu.canceled += instance.OnMenu;
                 }
             }
         }
@@ -340,6 +369,7 @@ namespace CrossFates
             void OnParry(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
+            void OnMenu(InputAction.CallbackContext context);
         }
     }
 }
