@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "new event", menuName = "Dialog/Conditions/Event", order = 50)]
+//[CreateAssetMenu(fileName = "new event", menuName = "Dialog/Conditions/Event", order = 50)]
 public class EventCondition : Condition
 {
     [System.NonSerialized] private bool performed = false;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "new dialog", menuName = "Dialog/Dialog", order = 50)]
+//[CreateAssetMenu(fileName = "new dialog", menuName = "Dialog/Dialog", order = 50)]
 public class Dialog : ScriptableObject
 {
     [SerializeField] private bool canRepeat;
