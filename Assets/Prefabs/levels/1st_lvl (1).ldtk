@@ -24,7 +24,7 @@
 	"defaultLevelBgColor": "#696A79",
 	"minifyJson": false,
 	"externalLevels": false,
-	"exportTiled": false,
+	"exportTiled": true,
 	"simplifiedExport": false,
 	"imageExportMode": "None",
 	"pngFilePattern": null,
