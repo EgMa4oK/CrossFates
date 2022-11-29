@@ -14,5 +14,10 @@ namespace CrossFates
             LevelManager.LoadLevel(level);
         }
 
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
+
     }
 }
