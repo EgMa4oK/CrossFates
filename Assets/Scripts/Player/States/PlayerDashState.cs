@@ -38,10 +38,13 @@ namespace CrossFates.PlayerStates
         public override void PhysicUpdate()
         {
             var distance = _speed * Time.fixedDeltaTime;
+            
             RaycastHit2D hit = Physics2D.Raycast(_rigidbody.position, _direction, distance, _obstacleLayer.value);
             if (hit.collider != null)
             {
-                _rigidbody.MovePosition(hit.point);
+                var position = hit.point;
+                var ourPosition = _rigidbody.ClosestPoint(position);
+                _rigidbody.MovePosition(hit.point + _rigidbody.position - ourPosition);
             }
             else 
             {

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 79634994b1231cd41b5a30df641c70b0
+guid: c608f55bc358e864eaa06ac24a1ec3c4
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,85 +104,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_0
+      name: homes_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 32
+        height: 64
+      alignment: 9
+      pivot: {x: 0.5, y: 0.35}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3fc03cc71f65f8468af08c7a8bbac51
+      internalID: -1358632160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Houses_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 320
+        width: 160
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6de58edd8f16184693dc533dfa13d5e
+      internalID: -2046218292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Houses_1
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 320
+        width: 192
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ae2138b6ad6f3644a3c4a9846dde25f
+      internalID: 471943372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Houses_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 160
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7f359d05734b6742a0ec5d03620464b
+      internalID: -438223112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Houses_3
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 160
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 515de16d59e4ac34cb5064c9d76c37af
-      internalID: -312043371
+      spriteID: aa0005813b3d0f94e9dd794c275b78be
+      internalID: -1179099115
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_1
+      name: Houses_4
       rect:
         serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
+        x: 0
+        y: 128
+        width: 224
+        height: 192
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8671d69f30e76ea419e0851c24e0bcb2
-      internalID: -350059004
+      spriteID: ac28be22761b50f44926b5a82052c3bb
+      internalID: -707904013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_2
+      name: Houses_5
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
+        x: 160
+        y: 64
+        width: 96
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cd706e624f13ba4aab8a324f1efa28c
-      internalID: 736712503
+      spriteID: 6bb0bde5731e78046936571477e50f5d
+      internalID: -714954256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_3
+      name: Houses_6
       rect:
         serializedVersion: 2
-        x: 144
+        x: 192
         y: 0
-        width: 48
-        height: 48
+        width: 64
+        height: 64
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f80337abadbf1f4aae5d1c055fc68ae
-      internalID: -2070680156
+      spriteID: 266339c109457c84dbc7156bf22d70d2
+      internalID: 1492914428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Houses_7
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82787b43cc62d1d40bc35397228ee37a
+      internalID: -1291335850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Houses_8
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd3ea0f723c60e54195da9345f668dfb
+      internalID: -247533639
       vertices: []
       indices: 
       edges: []
@@ -198,10 +324,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy_0: -312043371
-      Enemy_2: 736712503
-      Enemy_3: -2070680156
-      Enemy_1: -350059004
+      Houses_6: 1492914428
+      Houses_0: -2046218292
+      Houses_2: -438223112
+      Houses_8: -247533639
+      Houses_7: -1291335850
+      Houses_5: -714954256
+      homes_0: 1299185289
+      Houses_1: 471943372
+      homes_1: -1218261699
+      Houses_4: -707904013
+      homes_2: -1358632160
+      Houses_3: -1179099115
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

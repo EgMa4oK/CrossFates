@@ -81,7 +81,7 @@ namespace CrossFates
                     countLight += 1;
                 }
 
-                foreach (Collider2D collider in Physics2D.OverlapCircleAll((Vector2)transform.position + axis, lightAttack.AttackRadius, enemy_layer))
+                foreach (Collider2D collider in Physics2D.OverlapCircleAll((Vector2)transform.position + axis, lightAttack.AttackRadius))
                 {
                     ITakesDamage target = collider.GetComponent<ITakesDamage>();
                     if (target != null)           

@@ -1,0 +1,73 @@
+fileFormatVersion: 2
+guid: 77e64dad78fed6241978ceff2c8f5c06
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
+  _jsonFile: {fileID: -164016180542632921, guid: 77e64dad78fed6241978ceff2c8f5c06, type: 3}
+  _pixelsPerUnit: 32
+  _atlas: {instanceID: 0}
+  _customLevelPrefab: {instanceID: 0}
+  _deparentInRuntime: 0
+  _intGridValueColorsVisible: 0
+  _useCompositeCollider: 1
+  _createBackgroundColor: 1
+  _intGridValues:
+  - _key: GridForBound_1
+    _asset: {fileID: 11400000, guid: 3d602a39390487d4ebff8e628d231281, type: 2}
+  - _key: Trees_1
+    _asset: {fileID: 11400000, guid: 3d602a39390487d4ebff8e628d231281, type: 2}
+  - _key: Trees_2
+    _asset: {fileID: 11400000, guid: 3d602a39390487d4ebff8e628d231281, type: 2}
+  - _key: Ground_1
+    _asset: {fileID: 11400000, guid: 911ff206379da894b8ed9c5c46fbe516, type: 2}
+  - _key: Ground_2
+    _asset: {fileID: 11400000, guid: 911ff206379da894b8ed9c5c46fbe516, type: 2}
+  - _key: Ground_3
+    _asset: {fileID: 11400000, guid: 1fb042a8ff91f3448a917191051d98f4, type: 2}
+  _entities:
+  - _key: UseForCommunication
+    _asset: {instanceID: 0}
+  - _key: House1
+    _asset: {instanceID: 0}
+  - _key: House2
+    _asset: {instanceID: 0}
+  - _key: House3
+    _asset: {fileID: 930662269655848849, guid: b5a906063c21b5248aab0c8e7c714194, type: 3}
+  - _key: House4
+    _asset: {instanceID: 0}
+  - _key: House5
+    _asset: {instanceID: 0}
+  - _key: Desk
+    _asset: {instanceID: 0}
+  - _key: Bridge
+    _asset: {fileID: 5251858899211743866, guid: abe671f7b4d69974382a44ebc8731dec, type: 3}
+  - _key: BridgeSide
+    _asset: {fileID: 6744265139570824569, guid: 1da08d072e996bd4faa2d90f914e4312, type: 3}
+  - _key: Boxes
+    _asset: {fileID: 8608286511456742938, guid: 51d1389b2f2fb31468801ad4a5562d38, type: 3}
+  - _key: Log
+    _asset: {fileID: 925794471238961377, guid: de285b3211af18344a86fa314c1f859d, type: 3}
+  - _key: Tree1
+    _asset: {instanceID: 0}
+  - _key: Tree2
+    _asset: {instanceID: 0}
+  - _key: Sackura
+    _asset: {fileID: 925794471238961377, guid: 651b05f32cefa3542a06f9de8fcb6e0c, type: 3}
+  - _key: NPC
+    _asset: {fileID: 4695550926096418201, guid: dc206994684b2734682119191c1ea39d, type: 3}
+  - _key: Well
+    _asset: {instanceID: 0}
+  - _key: WellWithWather
+    _asset: {instanceID: 0}
+  - _key: Bench
+    _asset: {instanceID: 0}
+  - _key: BenchWithGrass
+    _asset: {instanceID: 0}
+  _enumGenerate: 0
+  _enumPath: 
+  _enumNamespace: 

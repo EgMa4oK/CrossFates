@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 79634994b1231cd41b5a30df641c70b0
+guid: 422c79bdce56ddd4884700b98bc5b7a3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -104,85 +104,68 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_0
+      name: 3z_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 128
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 515de16d59e4ac34cb5064c9d76c37af
-      internalID: -312043371
+      spriteID: 62228677411a38643b9661b2e2d9bb52
+      internalID: 1523517347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_1
+      name: 3z_1
       rect:
         serializedVersion: 2
-        x: 48
+        x: 128
         y: 0
-        width: 48
-        height: 48
+        width: 128
+        height: 160
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -24, y: -70}
+        - {x: -24, y: -45}
+        - {x: 18, y: -46}
+        - {x: 18, y: -70}
       tessellationDetail: 0
       bones: []
-      spriteID: 8671d69f30e76ea419e0851c24e0bcb2
-      internalID: -350059004
+      spriteID: 3bd7e4bbc5d523e489cc2c0f6d6188dd
+      internalID: 783771965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_2
+      name: Trees_0
       rect:
         serializedVersion: 2
-        x: 96
+        x: 320
         y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        width: 128
+        height: 160
+      alignment: 9
+      pivot: {x: 0.47549033, y: 0.15032677}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8cd706e624f13ba4aab8a324f1efa28c
-      internalID: 736712503
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Enemy_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f80337abadbf1f4aae5d1c055fc68ae
-      internalID: -2070680156
+      spriteID: 54f3cdb17ea41ff41ac3c97a97707619
+      internalID: 597728314
       vertices: []
       indices: 
       edges: []
@@ -198,10 +181,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Enemy_0: -312043371
-      Enemy_2: 736712503
-      Enemy_3: -2070680156
-      Enemy_1: -350059004
+      3z_0: -1516628918
+      Trees_0: 597728314
+      3z_1: 1523517347
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
