@@ -32,6 +32,7 @@ namespace CrossFates
             if (player != null)
             {
                 player.TakeDamage(_damage);
+                Destroy(gameObject);
             }
         }
 

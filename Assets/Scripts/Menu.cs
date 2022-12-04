@@ -22,6 +22,7 @@ namespace CrossFates
         }
         private void OnDisable()
         {
+            
             _controls.Disable();
             _controls.Character.Menu.performed -= ChangeMenuState;
         }
@@ -30,7 +31,14 @@ namespace CrossFates
         {
             print("asd");
             _menu.SetActive(!_menu.activeSelf);
-            Time.timeScale = _menu.activeSelf ? 0 : 1;
+            if (_menu.activeSelf)
+            {
+                Pause.Start();
+            }
+            else
+            {
+                Pause.Stop();
+            }
         }
 
         public void Restart()

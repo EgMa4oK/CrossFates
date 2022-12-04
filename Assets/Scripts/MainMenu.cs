@@ -8,7 +8,7 @@ namespace CrossFates
 
     public class MainMenu : MonoBehaviour
     {
-    
+
         public void LoadLevel(Level level)
         {
             LevelManager.LoadLevel(level);
@@ -18,6 +18,5 @@ namespace CrossFates
         {
             Application.Quit();
         }
-
     }
 }
