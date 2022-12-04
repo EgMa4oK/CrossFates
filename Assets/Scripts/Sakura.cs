@@ -10,7 +10,7 @@ namespace CrossFates
     {
         public void SakuraMoment()
         {
-            throw new Exception("It was too epic");
+            Application.Quit(1);
         }
     }
 }

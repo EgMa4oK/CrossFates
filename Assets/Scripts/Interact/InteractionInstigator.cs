@@ -59,8 +59,7 @@ namespace CrossFates
 
         private void Interact(InputAction.CallbackContext a)
         {
-            print("Sddd");
-            if (HasNearbyInteractables() && Input.Character.Interact.WasPressedThisFrame())
+            if (Time.timeScale != 0 && HasNearbyInteractables() && Input.Character.Interact.WasPressedThisFrame())
             {
                 print("Sd");
                 nearbyInteractables[0].Activate();
