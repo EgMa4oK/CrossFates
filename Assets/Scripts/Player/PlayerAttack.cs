@@ -17,17 +17,8 @@ namespace CrossFates
         [SerializeField] Attack lightAttack;
 
         private IEnumerator StandingHere;
-        private PlayerInput Input
-        {
-            get
-            {
-                if (input == null)
-                {
-                    input = new PlayerInput();
-                }
-                return input;
-            }
-        }
+        private Controls _input;
+
 
 
         [SerializeField] private float _ourNormalStun = 2;
@@ -35,20 +26,19 @@ namespace CrossFates
         [SerializeField] private float _stunTime = 2;
 
         private void Awake()
-        {          
+        {
+            _input = InputManager.Input;
             StandingHere = MoveReturn(_ourNormalStun);
         }
 
         private void OnEnable()
         {
-            Input.Player.Enable();
-            Input.Player.LightAttack.performed += LightAttack;
+            _input.Character.LightAttack.performed += LightAttack;
         }
 
         private void OnDisable()
         {
-            Input.Player.Disable();
-            Input.Player.LightAttack.performed -= LightAttack;
+            _input.Character.LightAttack.performed -= LightAttack;
         }
 
 
@@ -59,7 +49,7 @@ namespace CrossFates
 
                 StopCoroutine(StandingHere);
 
-                axis = input.Player.MousePosition.ReadValue<Vector2>();
+                axis = _input.Character.MousePosition.ReadValue<Vector2>();
                 axis = ((Vector2)(Camera.main.ScreenToWorldPoint(axis) - transform.position)).normalized * lightAttack.AttackRange;
                 effect(lightAttack.AttackVFX);
 

@@ -61,7 +61,6 @@ namespace CrossFates
         {
             if (Time.timeScale != 0 && HasNearbyInteractables() && Input.Character.Interact.WasPressedThisFrame())
             {
-                print("Sd");
                 nearbyInteractables[0].Activate();
                 OnInteraction?.Invoke();
             }

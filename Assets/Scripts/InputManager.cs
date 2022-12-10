@@ -7,45 +7,34 @@ namespace CrossFates
 {
     public class InputManager : MonoBehaviour
     {
-        private static PlayerInput input;
-        public static PlayerInput Input
+        private static Controls _input;
+        public static Controls Input
         {
             get
             {
-                if (input == null)
+                if (_input == null)
                 {
-                    input = new PlayerInput();
+                    Input = new Controls();
                 }
-                return input;
+                return _input;
             }
-            private set => input = value;
-        }
 
-        private void Awake()
+            private set => _input = value;
+        }
+        public void Awake()
         {
-
-            DialogueManager.OnDialogueEnd += SetStatusGame;
-            DialogueManager.OnDialogueStart += SetStatusMenu;
+            Input = new Controls();
+            Input.Enable();
         }
-
-        private void OnEnable()
-        {
-            Input.Player.Enable();
-        }
-        private void OnDisable()
-        {
-            Input.Disable();
-        }
-
-        private void SetStatusMenu()
+        public static void SetStatusMenu()
         {
             Input.Disable();
             Input.Menu.Enable();
         }
-        private void SetStatusGame()
+        public static void SetStatusGame()
         {
             Input.Disable();
-            Input.Player.Enable();
+            Input.Character.Enable();
 
 
         }

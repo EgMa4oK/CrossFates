@@ -39,7 +39,7 @@ namespace CrossFates
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""LightAttack"",
                     ""type"": ""Button"",
                     ""id"": ""fb0c1de9-0c6b-4e18-ad54-68fb99a7fbb0"",
                     ""expectedControlType"": ""Button"",
@@ -82,6 +82,15 @@ namespace CrossFates
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MousePosition"",
+                    ""type"": ""Value"",
+                    ""id"": ""6fba89ed-acf7-4e7a-8a17-54c28fd8a986"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -147,7 +156,7 @@ namespace CrossFates
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""LightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -194,6 +203,45 @@ namespace CrossFates
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c15cee4-78be-4125-b7c7-e6eb6bf80c8b"",
+                    ""path"": ""<Mouse>/position"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MousePosition"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""f893bcb7-c754-4786-a336-1ffa33a5acbd"",
+            ""actions"": [
+                {
+                    ""name"": ""Submit"",
+                    ""type"": ""Button"",
+                    ""id"": ""c5774842-4980-4fec-a7f0-3e66c95365a1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""7dce9d15-c885-4242-9c2b-64303a3c5d2d"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard-Mouse"",
+                    ""action"": ""Submit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -220,11 +268,15 @@ namespace CrossFates
             // Character
             m_Character = asset.FindActionMap("Character", throwIfNotFound: true);
             m_Character_Axis = m_Character.FindAction("Axis", throwIfNotFound: true);
-            m_Character_Attack = m_Character.FindAction("Attack", throwIfNotFound: true);
+            m_Character_LightAttack = m_Character.FindAction("LightAttack", throwIfNotFound: true);
             m_Character_Parry = m_Character.FindAction("Parry", throwIfNotFound: true);
             m_Character_Dash = m_Character.FindAction("Dash", throwIfNotFound: true);
             m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
             m_Character_Menu = m_Character.FindAction("Menu", throwIfNotFound: true);
+            m_Character_MousePosition = m_Character.FindAction("MousePosition", throwIfNotFound: true);
+            // Menu
+            m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+            m_Menu_Submit = m_Menu.FindAction("Submit", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -285,21 +337,23 @@ namespace CrossFates
         private readonly InputActionMap m_Character;
         private ICharacterActions m_CharacterActionsCallbackInterface;
         private readonly InputAction m_Character_Axis;
-        private readonly InputAction m_Character_Attack;
+        private readonly InputAction m_Character_LightAttack;
         private readonly InputAction m_Character_Parry;
         private readonly InputAction m_Character_Dash;
         private readonly InputAction m_Character_Interact;
         private readonly InputAction m_Character_Menu;
+        private readonly InputAction m_Character_MousePosition;
         public struct CharacterActions
         {
             private @Controls m_Wrapper;
             public CharacterActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Axis => m_Wrapper.m_Character_Axis;
-            public InputAction @Attack => m_Wrapper.m_Character_Attack;
+            public InputAction @LightAttack => m_Wrapper.m_Character_LightAttack;
             public InputAction @Parry => m_Wrapper.m_Character_Parry;
             public InputAction @Dash => m_Wrapper.m_Character_Dash;
             public InputAction @Interact => m_Wrapper.m_Character_Interact;
             public InputAction @Menu => m_Wrapper.m_Character_Menu;
+            public InputAction @MousePosition => m_Wrapper.m_Character_MousePosition;
             public InputActionMap Get() { return m_Wrapper.m_Character; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -312,9 +366,9 @@ namespace CrossFates
                     @Axis.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAxis;
                     @Axis.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAxis;
                     @Axis.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAxis;
-                    @Attack.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
-                    @Attack.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
-                    @Attack.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnAttack;
+                    @LightAttack.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLightAttack;
+                    @LightAttack.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLightAttack;
+                    @LightAttack.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLightAttack;
                     @Parry.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnParry;
                     @Parry.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnParry;
                     @Parry.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnParry;
@@ -327,6 +381,9 @@ namespace CrossFates
                     @Menu.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMenu;
                     @Menu.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMenu;
                     @Menu.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMenu;
+                    @MousePosition.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMousePosition;
+                    @MousePosition.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMousePosition;
+                    @MousePosition.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnMousePosition;
                 }
                 m_Wrapper.m_CharacterActionsCallbackInterface = instance;
                 if (instance != null)
@@ -334,9 +391,9 @@ namespace CrossFates
                     @Axis.started += instance.OnAxis;
                     @Axis.performed += instance.OnAxis;
                     @Axis.canceled += instance.OnAxis;
-                    @Attack.started += instance.OnAttack;
-                    @Attack.performed += instance.OnAttack;
-                    @Attack.canceled += instance.OnAttack;
+                    @LightAttack.started += instance.OnLightAttack;
+                    @LightAttack.performed += instance.OnLightAttack;
+                    @LightAttack.canceled += instance.OnLightAttack;
                     @Parry.started += instance.OnParry;
                     @Parry.performed += instance.OnParry;
                     @Parry.canceled += instance.OnParry;
@@ -349,10 +406,46 @@ namespace CrossFates
                     @Menu.started += instance.OnMenu;
                     @Menu.performed += instance.OnMenu;
                     @Menu.canceled += instance.OnMenu;
+                    @MousePosition.started += instance.OnMousePosition;
+                    @MousePosition.performed += instance.OnMousePosition;
+                    @MousePosition.canceled += instance.OnMousePosition;
                 }
             }
         }
         public CharacterActions @Character => new CharacterActions(this);
+
+        // Menu
+        private readonly InputActionMap m_Menu;
+        private IMenuActions m_MenuActionsCallbackInterface;
+        private readonly InputAction m_Menu_Submit;
+        public struct MenuActions
+        {
+            private @Controls m_Wrapper;
+            public MenuActions(@Controls wrapper) { m_Wrapper = wrapper; }
+            public InputAction @Submit => m_Wrapper.m_Menu_Submit;
+            public InputActionMap Get() { return m_Wrapper.m_Menu; }
+            public void Enable() { Get().Enable(); }
+            public void Disable() { Get().Disable(); }
+            public bool enabled => Get().enabled;
+            public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+            public void SetCallbacks(IMenuActions instance)
+            {
+                if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+                {
+                    @Submit.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnSubmit;
+                    @Submit.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnSubmit;
+                    @Submit.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnSubmit;
+                }
+                m_Wrapper.m_MenuActionsCallbackInterface = instance;
+                if (instance != null)
+                {
+                    @Submit.started += instance.OnSubmit;
+                    @Submit.performed += instance.OnSubmit;
+                    @Submit.canceled += instance.OnSubmit;
+                }
+            }
+        }
+        public MenuActions @Menu => new MenuActions(this);
         private int m_KeyboardMouseSchemeIndex = -1;
         public InputControlScheme KeyboardMouseScheme
         {
@@ -365,11 +458,16 @@ namespace CrossFates
         public interface ICharacterActions
         {
             void OnAxis(InputAction.CallbackContext context);
-            void OnAttack(InputAction.CallbackContext context);
+            void OnLightAttack(InputAction.CallbackContext context);
             void OnParry(InputAction.CallbackContext context);
             void OnDash(InputAction.CallbackContext context);
             void OnInteract(InputAction.CallbackContext context);
             void OnMenu(InputAction.CallbackContext context);
+            void OnMousePosition(InputAction.CallbackContext context);
+        }
+        public interface IMenuActions
+        {
+            void OnSubmit(InputAction.CallbackContext context);
         }
     }
 }
