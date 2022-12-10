@@ -76,7 +76,6 @@ namespace CrossFates
             {
                 Text = currentStory.Continue();
                 ParseTags();
-                print(manager);
                 OnDialogueContinue?.Invoke();
                 DisplayChoices();
             }
@@ -112,7 +111,6 @@ namespace CrossFates
                         break;
                 }
             }
-            print(manager);
         }
 
         public void MakeChoice(int index)
