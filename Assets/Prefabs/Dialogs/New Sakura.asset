@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770b737682c2a6348bc4e7cfe519f7f4, type: 3}
   m_Name: New Sakura
   m_EditorClassIdentifier: 
+  _image: {fileID: 8004408167920346266, guid: c1dc3d20167722f43972ff3351d84c75, type: 3}
