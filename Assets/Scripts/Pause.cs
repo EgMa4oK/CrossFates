@@ -6,18 +6,22 @@ namespace CrossFates
 {
     public static class Pause
     {
-        private static int _requestCount = 0;
+        private static List<IPauseRequster> _requesters = new();
 
-        public static void Start()
-        {
+        public static void Request(IPauseRequster requster)
+        {           
             Time.timeScale = 0;
-            _requestCount += 1;
+            _requesters.Add(requster);
         }
 
-        public static void Stop()
+        public static void Stop(IPauseRequster requester)
         {
-            _requestCount -= 1;
-            if (_requestCount == 0)
+            _requesters.RemoveAll(elm => elm as Object == null);
+            if (_requesters.Contains(requester))
+            {
+                _requesters.Remove(requester);
+            }
+            if (_requesters.Count == 0)
             {
                 Time.timeScale = 1;
             }

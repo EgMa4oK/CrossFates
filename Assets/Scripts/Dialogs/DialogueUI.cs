@@ -41,7 +41,7 @@ namespace CrossFates
         private void OnEnable()
         {
             
-            DialogueManager.OnDialogueStart += StartDialogue;
+            DialogueManager.OnDialogueStart += ShowDialogue;
             DialogueManager.OnDialogueEnd += HideDialogue;
             DialogueManager.OnDialogueContinue += ContinueDialgoue;
             DialogueManager.OnDialogueChoices += DisplayChoices;
@@ -51,22 +51,20 @@ namespace CrossFates
         private void OnDisable()
         {
             
-            DialogueManager.OnDialogueStart -= StartDialogue;
+            DialogueManager.OnDialogueStart -= ShowDialogue;
             DialogueManager.OnDialogueEnd -= HideDialogue;
             DialogueManager.OnDialogueContinue -= ContinueDialgoue;
             DialogueManager.OnDialogueChoices -= DisplayChoices;
             InputManager.Input.Menu.Submit.canceled -= Crutch;
         }
 
-        private void StartDialogue()
-        {
-            Pause.Start();
+        private void ShowDialogue()
+        {    
             dialoguePannel.SetActive(true);
         }
 
         private void HideDialogue()
         {
-            Pause.Stop();
             dialoguePannel.SetActive(false);
         }
 

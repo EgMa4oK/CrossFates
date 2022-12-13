@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace CrossFates
 {
-    public class Level
+    public class Level1
     {
         [SerializeField] private string _levelName;
         private bool _isCompleted;

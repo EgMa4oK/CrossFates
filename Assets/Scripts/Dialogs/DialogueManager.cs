@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace CrossFates
 {
-    public class DialogueManager : MonoBehaviour
+    public class DialogueManager : MonoBehaviour, IPauseRequster
     {
         private static DialogueManager manager;
 
@@ -37,11 +37,6 @@ namespace CrossFates
             manager = this;
         }
 
-        private void OnEnable()
-        {
-            InputManager.Input.Menu.Submit.canceled += Crutch;
-        }
-
         private void OnDisable()
         {
             InputManager.Input.Menu.Submit.canceled -= Crutch;
@@ -54,17 +49,24 @@ namespace CrossFates
 
         public void StartDialogue(Dialog dialog)
         {
+            InputManager.Input.Menu.Submit.canceled += Crutch;
             currentDialog = dialog;
             TextAsset inkJSON = dialog.DialogINK;
             currentStory = new Story(inkJSON.text);
             OnDialogueStart?.Invoke();
+
+            Pause.Request(this);
+
             ContinueDialogue();
         }
 
         private void EndDialogue()
         {
+            InputManager.Input.Menu.Submit.canceled -= Crutch;
             OnDialogueEnd?.Invoke();
-            currentDialog.OnEnd.Invoke();
+            currentDialog.OnEnd.Invoke();   
+
+            Pause.Stop(this);
         }
 
         private void ContinueDialogue()

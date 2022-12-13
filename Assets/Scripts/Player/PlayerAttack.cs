@@ -7,7 +7,6 @@ namespace CrossFates
 {
     public class PlayerAttack : MonoBehaviour
     {
-        private PlayerInput input;
         private float reset;
         private float cooldown = 0.2f;
         private int countLight = 0;
@@ -28,7 +27,7 @@ namespace CrossFates
         private void Awake()
         {
             _input = InputManager.Input;
-            StandingHere = MoveReturn(_ourNormalStun);
+            
         }
 
         private void OnEnable()
@@ -46,15 +45,9 @@ namespace CrossFates
         {
             if (Time.time > cooldown)
             {
-
-                StopCoroutine(StandingHere);
-
                 axis = _input.Character.MousePosition.ReadValue<Vector2>();
                 axis = ((Vector2)(Camera.main.ScreenToWorldPoint(axis) - transform.position)).normalized * lightAttack.AttackRange;
                 effect(lightAttack.AttackVFX);
-
-                StandingHere = MoveReturn(_ourNormalStun);
-                StartCoroutine(StandingHere);
 
                 if (Time.time >= reset) { countLight = 1; }
 
@@ -86,7 +79,6 @@ namespace CrossFates
         public void Stun(float stun)
         {
             StopCoroutine(StandingHere);
-            StandingHere = MoveReturn(stun);
             StartCoroutine(StandingHere);
             cooldown = Time.time + stun;
         }
@@ -98,12 +90,6 @@ namespace CrossFates
             Destroy(a, 1f);
         }
 
-        private IEnumerator MoveReturn(float sec)
-        {
-            input.Player.Move.Disable();
-            yield return new WaitForSeconds(sec);
-            input.Player.Move.Enable();
-        }
 
         private void OnDrawGizmos()
         {
