@@ -10,9 +10,12 @@ namespace CrossFates
         private bool _isCompleted = false;
         private const string saveKey = "mainSave";
         [SerializeField] private Vector2 _spawnPoint = new Vector2(0, 0);
+
         public Vector2 SpawnPoint => _spawnPoint;
-        private void Awake()
+        public bool IsCompleted => _isCompleted;
+        private void OnEnable()
         {
+            SaveReset.SaveRemoved += Load;
             Load();
         }
 
