@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace CrossFates
 {
-    public class Menu : MonoBehaviour
+    public class Menu : MonoBehaviour, IPauseRequster
     {
         [SerializeField] private GameObject _menu;
         private Controls _controls;
@@ -22,22 +22,21 @@ namespace CrossFates
         }
         private void OnDisable()
         {
-            
+
             _controls.Disable();
             _controls.Character.Menu.performed -= ChangeMenuState;
         }
 
         private void ChangeMenuState(InputAction.CallbackContext callback)
         {
-            print("asd");
             _menu.SetActive(!_menu.activeSelf);
             if (_menu.activeSelf)
             {
-                Pause.Start();
+                Pause.Request(this);
             }
             else
             {
-                Pause.Stop();
+                Pause.Stop(this);
             }
         }
 

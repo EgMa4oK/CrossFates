@@ -23,7 +23,6 @@ namespace CrossFates
         }
         public void Awake()
         {
-            Input = new Controls();
             Input.Enable();
         }
         public static void SetStatusMenu()

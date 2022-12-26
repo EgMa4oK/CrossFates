@@ -53,27 +53,9 @@ namespace CrossFates {
             };
             _currentState = _allStates[0];
         }
-        public void TakeDamage(float damage)
+        private void OnDisable()
         {
-            _health -= damage;
-            HealthChanged.Invoke(_health, _maxHealth);
-            if (_health <= 0)
-            {
-                Die();
-            }
-        }
-
-        private void Die()
-        {
-            gameObject.SetActive(false);
-        }
-
-        public void SwitchState<T>() where T : PlayerState
-        {
-            var state = _allStates.FirstOrDefault(s => s is T);
             _currentState.Exit();
-            _currentState = state;
-            _currentState.Enter();
         }
 
         private void Update()
@@ -89,7 +71,32 @@ namespace CrossFates {
             if (_currentState != null)
             {
                 _currentState.PhysicUpdate();
-            }  
+            }
+        }
+
+        private void Die()
+        {
+            gameObject.SetActive(false);
+        }
+
+        public void TakeDamage(float damage)
+        {
+            _health -= damage;
+            HealthChanged.Invoke(_health, _maxHealth);
+            if (_health <= 0)
+            {
+                Die();
+            }
+        }
+
+
+
+        public void SwitchState<T>() where T : PlayerState
+        {
+            var state = _allStates.FirstOrDefault(s => s is T);
+            _currentState.Exit();
+            _currentState = state;
+            _currentState.Enter();
         }
     }
 }

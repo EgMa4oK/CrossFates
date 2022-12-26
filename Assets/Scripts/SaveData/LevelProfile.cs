@@ -1,4 +1,4 @@
-namespace SaveData
+namespace CrossFates.SaveData
 {
     [System.Serializable]
     public class LevelProfile
