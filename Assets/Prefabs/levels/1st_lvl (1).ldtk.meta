@@ -20,7 +20,7 @@ ScriptedImporter:
   - _key: Floor_1
     _asset: {fileID: 11400000, guid: 911ff206379da894b8ed9c5c46fbe516, type: 2}
   - _key: Floor_2
-    _asset: {fileID: 11400000, guid: 1fb042a8ff91f3448a917191051d98f4, type: 2}
+    _asset: {fileID: 11400000, guid: 3d602a39390487d4ebff8e628d231281, type: 2}
   - _key: Floor_3
     _asset: {fileID: 11400000, guid: 3d602a39390487d4ebff8e628d231281, type: 2}
   _entities: []

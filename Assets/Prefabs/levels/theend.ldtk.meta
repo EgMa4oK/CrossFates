@@ -10,7 +10,7 @@ ScriptedImporter:
   script: {fileID: 11500000, guid: aaa16bfc62c086f4fb45da87b6acf9b1, type: 3}
   _jsonFile: {fileID: -164016180542632921, guid: 77e64dad78fed6241978ceff2c8f5c06, type: 3}
   _pixelsPerUnit: 32
-  _atlas: {instanceID: 0}
+  _atlas: {fileID: 4343727234628468602, guid: e89124f3c64619549909ade6903c43a0, type: 2}
   _customLevelPrefab: {instanceID: 0}
   _deparentInRuntime: 0
   _intGridValueColorsVisible: 0
@@ -28,20 +28,20 @@ ScriptedImporter:
   - _key: Ground_2
     _asset: {fileID: 11400000, guid: 911ff206379da894b8ed9c5c46fbe516, type: 2}
   - _key: Ground_3
-    _asset: {fileID: 11400000, guid: 1fb042a8ff91f3448a917191051d98f4, type: 2}
+    _asset: {fileID: 11400000, guid: 3d602a39390487d4ebff8e628d231281, type: 2}
   _entities:
   - _key: UseForCommunication
     _asset: {instanceID: 0}
   - _key: House1
-    _asset: {instanceID: 0}
+    _asset: {fileID: 5297175039291771152, guid: 54b5753947d31fa4e86e8c5f332f8e85, type: 3}
   - _key: House2
-    _asset: {instanceID: 0}
+    _asset: {fileID: 7146172833520794653, guid: 6b021889ef0bef24b8d55a1d870a678d, type: 3}
   - _key: House3
     _asset: {fileID: 930662269655848849, guid: b5a906063c21b5248aab0c8e7c714194, type: 3}
   - _key: House4
-    _asset: {instanceID: 0}
+    _asset: {fileID: 3610143491652619118, guid: 6f774f52297e06947892662b7a35b25a, type: 3}
   - _key: House5
-    _asset: {instanceID: 0}
+    _asset: {fileID: 2168201473192061451, guid: ccda9e32b8e64bd4a8520ef2de9d0a1d, type: 3}
   - _key: Desk
     _asset: {instanceID: 0}
   - _key: Bridge
@@ -55,19 +55,19 @@ ScriptedImporter:
   - _key: Tree1
     _asset: {instanceID: 0}
   - _key: Tree2
-    _asset: {instanceID: 0}
+    _asset: {fileID: 1741993464719059801, guid: fbfa78fe448eb5f42b53920b382d7ff1, type: 3}
   - _key: Sackura
     _asset: {fileID: 925794471238961377, guid: 651b05f32cefa3542a06f9de8fcb6e0c, type: 3}
   - _key: NPC
-    _asset: {fileID: 4695550926096418201, guid: dc206994684b2734682119191c1ea39d, type: 3}
-  - _key: Well
     _asset: {instanceID: 0}
+  - _key: Well
+    _asset: {fileID: 5164551570634826259, guid: c45a1fb26cb8fd84385aaec6ad3e30a6, type: 3}
   - _key: WellWithWather
     _asset: {instanceID: 0}
   - _key: Bench
-    _asset: {instanceID: 0}
+    _asset: {fileID: 925794471238961377, guid: bea748a27329dac47b0a1e419845cba3, type: 3}
   - _key: BenchWithGrass
-    _asset: {instanceID: 0}
+    _asset: {fileID: 6284366386968250747, guid: 0c931c223de3ded4399cb579a2bdf78c, type: 3}
   _enumGenerate: 0
   _enumPath: 
   _enumNamespace: 

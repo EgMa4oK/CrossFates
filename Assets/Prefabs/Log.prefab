@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5867807921871493831}
   - component: {fileID: 7523673515906306347}
   - component: {fileID: 7474774687728962645}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: justtosuffer_49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 4
-  condition: {fileID: 11400000, guid: 65822f94dce806f4ebf36a5fea06a1a7, type: 2}
+  condition: {fileID: 0}
 --- !u!61 &7474774687728962645
 BoxCollider2D:
   m_ObjectHideFlags: 0
