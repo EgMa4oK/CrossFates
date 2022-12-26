@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: level 1
   m_EditorClassIdentifier: 
   _spawnPoint: {x: -5, y: 2}
+  _bottomLeft: {x: -15.65, y: -25.63}
+  _topRight: {x: 24.35, y: 14.35}

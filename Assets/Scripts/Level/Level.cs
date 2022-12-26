@@ -10,8 +10,10 @@ namespace CrossFates
         private bool _isCompleted = false;
         private const string saveKey = "mainSave";
         [SerializeField] private Vector2 _spawnPoint = new Vector2(0, 0);
+        [SerializeField] private Collider2D _collider;
 
         public Vector2 SpawnPoint => _spawnPoint;
+        public Collider2D Colider => _collider;
         public bool IsCompleted => _isCompleted;
         private void OnEnable()
         {

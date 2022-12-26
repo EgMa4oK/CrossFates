@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace CrossFates
 {
@@ -10,6 +11,7 @@ namespace CrossFates
 
         private void Update()
         {
+
             transform.SetPositionAndRotation(_target.position, transform.rotation);
         }
     }
