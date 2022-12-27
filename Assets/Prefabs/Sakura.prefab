@@ -176,6 +176,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 91fea777e58a74a45ad8fc18b458e7bf, type: 2}
+        m_TargetAssemblyTypeName: CrossFates.Level, Assembly-CSharp
+        m_MethodName: Complete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   canActivateWhenEnemy: 0
   enemy_layer:
     serializedVersion: 2
@@ -254,7 +266,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 073674dab5ac0834f87df437576daf42, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 40683ed7987116b44b446a17046adf09, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

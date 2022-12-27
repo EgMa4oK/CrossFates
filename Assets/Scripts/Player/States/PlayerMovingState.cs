@@ -31,11 +31,16 @@ namespace CrossFates.PlayerStates
         private void Move()
         {
             _rigidbody.velocity = _direction * _speed;
+            var scale = _rigidbody.velocity.x > 0 ? 1 : -1;
+            _character.transform.localScale = new Vector3(scale, 1, 1);
         }
 
         private void Dash(InputAction.CallbackContext context)
         {
-            _character.SwitchState<DashState>();
+            if (_character.DashTime + _character.DashCD < Time.time)
+            {
+                _character.SwitchState<DashState>();
+            }
         }
 
         public override void Exit()

@@ -24,7 +24,10 @@ namespace CrossFates.PlayerStates
         }
         private void Dash(InputAction.CallbackContext context)
         {
-            _character.SwitchState<DashState>();
+            if ( _character.DashTime + _character.DashCD < Time.time)
+            {
+                _character.SwitchState<DashState>();
+            }
         }
         public override void Enter()
         {

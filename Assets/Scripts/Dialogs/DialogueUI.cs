@@ -5,6 +5,7 @@ using Ink.Runtime;
 using UnityEngine.EventSystems;
 using TMPro;
 using static UnityEngine.InputSystem.InputAction;
+using System.Threading.Tasks;
 
 namespace CrossFates
 {
@@ -20,7 +21,6 @@ namespace CrossFates
         [SerializeField] TextMeshProUGUI speakerName;
 
         [SerializeField] private float typingTime = 0.1f;
-        private IEnumerator typing;
         private bool isTyping = false;
 
 
@@ -71,33 +71,32 @@ namespace CrossFates
         private void ContinueDialgoue()
         {
             speakerName.text = manager.Speaker;
-            typing = DisplayLine(manager.Text);
-            StartCoroutine(typing);
+            DisplayLine(manager.Text);
         }
 
-        private IEnumerator DisplayLine(string line)
+        private async void DisplayLine(string line)
         {
             manager.CanContinue = false;
             isTyping = true;
             dialogueText.text = "";
             foreach (char letter in line)
             {
-                dialogueText.text += letter;
-                yield return new WaitForSeconds(typingTime);
+                if (isTyping)
+                {
+                    dialogueText.text += letter; 
+                    await Task.Delay((int)(typingTime * 1000));
+                } 
             }
             manager.CanContinue = true;
             isTyping = false;
         }
 
-        private IEnumerator SkipTyping()
+        private void SkipTyping()
         {
             if (isTyping)
             {
-                StopCoroutine(typing);
-                isTyping = false;
                 dialogueText.text = manager.Text;
-                yield return new WaitForEndOfFrame();
-                manager.CanContinue = true;
+                isTyping = false;
             }
         }
 
@@ -141,7 +140,7 @@ namespace CrossFates
         private void Crutch(CallbackContext a)
         {
 
-            StartCoroutine(SkipTyping());
+            SkipTyping();
 
 
         }

@@ -9,6 +9,7 @@ namespace CrossFates
     public class Menu : MonoBehaviour, IPauseRequster
     {
         [SerializeField] private GameObject _menu;
+        [SerializeField] private GameObject _character;
         private Controls _controls;
         private void Awake()
         {
@@ -17,6 +18,7 @@ namespace CrossFates
         }
         private void OnEnable()
         {
+
             _controls.Enable();
             _controls.Character.Menu.performed += ChangeMenuState;
         }

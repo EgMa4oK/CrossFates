@@ -28,6 +28,7 @@ namespace CrossFates.PlayerStates
         {
             base.Exit();
             _rigidbody.velocity = Vector2.zero;
+            _character.DashTime = Time.time;
         }
         private async void Timer()
         {

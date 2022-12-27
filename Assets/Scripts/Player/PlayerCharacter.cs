@@ -27,8 +27,14 @@ namespace CrossFates {
         private float _speedModifier = 2;
         [SerializeField, Min(1)]
         private float _dashModifier = 4;
+        [SerializeField]
+        private GameObject _menu;
+        [SerializeField]
+        private float _dashCD;
 
 
+        public float DashTime { get; set; } = 0;
+        public float DashCD => _dashCD;
         public Vector2 LastDirection;
         public event Action<float, float> HealthChanged;
 
@@ -77,6 +83,7 @@ namespace CrossFates {
         private void Die()
         {
             gameObject.SetActive(false);
+            _menu.SetActive(true);
         }
 
         public void TakeDamage(float damage)

@@ -49,6 +49,8 @@ namespace CrossFates
 
         public void StartDialogue(Dialog dialog)
         {
+            InputManager.Input.Disable();
+            InputManager.Input.Menu.Enable();
             InputManager.Input.Menu.Submit.canceled += Crutch;
             currentDialog = dialog;
             TextAsset inkJSON = dialog.DialogINK;
@@ -62,6 +64,7 @@ namespace CrossFates
 
         private void EndDialogue()
         {
+            InputManager.Input.Enable();
             InputManager.Input.Menu.Submit.canceled -= Crutch;
             OnDialogueEnd?.Invoke();
             currentDialog.OnEnd.Invoke();   
