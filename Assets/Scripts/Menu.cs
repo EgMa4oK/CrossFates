@@ -29,12 +29,17 @@ namespace CrossFates
             _controls.Character.Menu.performed -= ChangeMenuState;
         }
 
-        private void ChangeMenuState(InputAction.CallbackContext callback)
+        public void ChangeMenuState(InputAction.CallbackContext callback)
         {
             _menu.SetActive(!_menu.activeSelf);
             if (_menu.activeSelf)
             {
                 Pause.Request(this);
+                print(_character.activeSelf);
+                if (!_character.activeSelf)
+                {
+                    _controls.Disable();
+                }
             }
             else
             {

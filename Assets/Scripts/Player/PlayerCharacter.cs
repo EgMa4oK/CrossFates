@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using CrossFates.PlayerStates;
 using System;
+using static UnityEngine.InputSystem.InputAction;
 
 namespace CrossFates {
 
@@ -28,7 +29,7 @@ namespace CrossFates {
         [SerializeField, Min(1)]
         private float _dashModifier = 4;
         [SerializeField]
-        private GameObject _menu;
+        private Menu _menu;
         [SerializeField]
         private float _dashCD;
 
@@ -83,7 +84,7 @@ namespace CrossFates {
         private void Die()
         {
             gameObject.SetActive(false);
-            _menu.SetActive(true);
+            _menu.ChangeMenuState(new CallbackContext());
         }
 
         public void TakeDamage(float damage)
