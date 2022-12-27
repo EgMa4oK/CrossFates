@@ -7,9 +7,12 @@ namespace CrossFates
     public class Trigger : Activator
     {
 
-        private void OnTriggerEnter2D()
+        private void OnTriggerEnter2D(Collider2D collider)
         {
-            Activate();
+            if(collider.GetComponent<PlayerCharacter>() != null)
+            {
+                Activate();
+            }          
         }
     }
 }

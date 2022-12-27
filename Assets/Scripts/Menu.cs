@@ -35,7 +35,6 @@ namespace CrossFates
             if (_menu.activeSelf)
             {
                 Pause.Request(this);
-                print(_character.activeSelf);
                 if (!_character.activeSelf)
                 {
                     _controls.Disable();
